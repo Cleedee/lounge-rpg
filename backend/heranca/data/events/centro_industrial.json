@@ -1,0 +1,180 @@
+{
+  "sector": "centro_industrial",
+  "description": "Eventos do Centro Industrial — fábricas, toxinas, ferros-velho e horrores industriais.",
+  "die": "d20",
+  "events": [
+    {
+      "roll": 1, "title": "A Fábrica que Range",
+      "description": "Uma fábrica têxtil abandonada ainda tem máquinas funcionando. O tear sozinho, tecendo um pano preto que parece crescer sozinho. O chão está coberto do mesmo tecido.",
+      "type": "supernatural", "requires_test": true,
+      "attribute": "Mente", "skill": "Conhecimento",
+      "success": "Você vê que o tecido está se movendo lentamente em direção a um ralo. Algo está puxando. Você não quer saber o quê.",
+      "failure": "O tecido envolve seu tornozelo. Você precisa cortar para soltar. Perde 1 de Saúde ao se machucar com a faca.",
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 2, "title": "Depósito de Munição",
+      "description": "Um contêiner militar lacrado está parcialmente enterrado em um galpão desabado. A identificação: 'Munição Calibre .45 — Não Expor ao Calor'.",
+      "type": "resource", "requires_test": true,
+      "attribute": "Corpo", "skill": "Combate a Distância",
+      "success": "Você consegue abrir sem detonar nada. 40 munições em bom estado.",
+      "failure": "O contêiner está emperrado. Você força e faz barulho. Algo lá fora respondeu.",
+      "rewards": {"items": [{"name": "Munição .45", "qty": 40}]},
+      "leads_to_encounter": true, "encounter_type": "violent"
+    },
+    {
+      "roll": 3, "title": "Lago Tóxico",
+      "description": "Uma poça enorme de resíduo químico brilha em verde neon no pátio de uma fábrica. Peixes mortos flutuam — mas um deles parece estar se mexendo ainda. Tem o tamanho de um cachorro.",
+      "type": "violent", "requires_test": false,
+      "leads_to_encounter": true, "encounter_type": "violent"
+    },
+    {
+      "roll": 4, "title": "Sucata de Robôs",
+      "description": "Uma pilha de robôs industriais desativados. Alguns parecem intactos. Um deles tem olhos azuis que acendem quando você se aproxima: 'Bem-vindo à Automatec. Sua segurança é nossa prioridade.'",
+      "type": "discovery", "requires_test": true,
+      "attribute": "Mente", "skill": "Tecnologia",
+      "success": "Você consegue reativar um robô de carga. Ele pode carregar até 50kg de suprimentos.",
+      "failure": "O robô liga em modo de segurança e emite um alerta sonoro alto.",
+      "rewards": {"items": [{"name": "Robô de Carga (Reativado)", "qty": 1}]},
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 5, "title": "Fumaça Preta",
+      "description": "Uma chaminé gigante expele fumaça preta e densa. Não deveria — não há energia na cidade. A fumaça tem cheiro de enxofre e carne queimada.",
+      "type": "neutral", "requires_test": true,
+      "attribute": "Corpo", "skill": "Sobrevivência",
+      "success": "Você identifica a direção do vento e se mantém longe da fumaça.",
+      "failure": "Você inala um pouco da fumaça. Tosse e olhos lacrimejando. Desvantagem em testes por 1 hora.",
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 6, "title": "Ferro-Velho",
+      "description": "Um ferro-velho com carros empilhados até o teto. Alguém montou uma oficina aqui — ferramentas penduradas, bancada organizada. O dono não está.",
+      "type": "resource", "requires_test": true,
+      "attribute": "Mente", "skill": "Investigação",
+      "success": "Você encontra ferramentas de qualidade, um maçarico portátil e gás sobrando.",
+      "failure": "O local foi saqueado antes. Só restaram ferramentas quebradas.",
+      "rewards": {"items": [{"name": "Maçarico Portátil", "qty": 1}, {"name": "Ferramentas", "qty": 1}]},
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 7, "title": "Túnel do Esgoto",
+      "description": "Uma passagem para o esgoto industrial. Água escura e oleosa. No fundo do túnel, uma luz pulsante e o que parece ser um canto baixo e múltiplo.",
+      "type": "violent", "requires_test": false,
+      "leads_to_encounter": true, "encounter_type": "violent"
+    },
+    {
+      "roll": 8, "title": "Estoque Hospitalar",
+      "description": "Um contêiner com o símbolo da Cruz Vermelha está parcialmente aberto. Seringas, analgésicos, ataduras. Ouro médico.",
+      "type": "resource", "requires_test": true,
+      "attribute": "Corpo", "skill": "Sobrevivência",
+      "success": "Você enche a mochila com suprimentos médicos.",
+      "failure": "O contêiner está trancado e lacrado. Você ouve passos se aproximando.",
+      "rewards": {"items": [{"name": "Kit Médico", "qty": 2}, {"name": "Analgésicos", "qty": 3}]},
+      "leads_to_encounter": true, "encounter_type": "neutral"
+    },
+    {
+      "roll": 9, "title": "A Mulher na Cabine",
+      "description": "Na cabine de segurança de um galpão, uma mulher magra e suja segura uma lanterna. 'Você não deveria estar aqui. Eles alimentam as máquinas à noite.'",
+      "type": "social", "requires_test": true,
+      "attribute": "Espírito", "skill": "Manipulação",
+      "success": "Ela te oferece abrigo até o amanhecer em troca de pilhas.",
+      "failure": "Ela aponta a lanterna para seu rosto e grita: 'VAI! CORRE!'",
+      "rewards": {"info": "À noite, as máquinas da fábrica 3 'acordam'. Evite o local após o pôr do sol."},
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 10, "title": "Tanque de Produto Químico",
+      "description": "Um tanque gigante com líquido laranja está rachando. O líquido escorre formando um riacho que brilha no escuro. Insetos mortos ao redor.",
+      "type": "trap", "requires_test": true,
+      "attribute": "Corpo", "skill": "Atletismo",
+      "success": "Você contorna a área contaminada.",
+      "failure": "O vapor queima sua pele exposta. Perde 2 de Saúde.",
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 11, "title": "Cadeia de Montagem",
+      "description": "Uma esteira rolante ainda se move em uma fábrica de processamento de carne. Ela carrega... não é carne. Os ganchos têm coisas que já foram humanas.",
+      "type": "supernatural", "requires_test": true,
+      "attribute": "Mente", "skill": "Conhecimento",
+      "success": "Você entende que estão 'processando' corpos para alimentar algo. Você fotografa com a mente e sai.",
+      "failure": "Você vomita. O som atrai atenção. Algo na esteira abre os olhos.",
+      "leads_to_encounter": true, "encounter_type": "violent"
+    },
+    {
+      "roll": 12, "title": "Gerador Diesel",
+      "description": "Um gerador industrial grande e intacto. Tanque meio cheio. Se você conseguir ligá-lo, terá energia.",
+      "type": "discovery", "requires_test": true,
+      "attribute": "Mente", "skill": "Tecnologia",
+      "success": "O gerador liga. Você pode carregar baterias por 2 horas.",
+      "failure": "O motor tosse mas não pega. A fumaça preta chamou atenção.",
+      "rewards": {"info": "Ponto de recarga de baterias disponível"},
+      "leads_to_encounter": true, "encounter_type": "violent"
+    },
+    {
+      "roll": 13, "title": "Os Pássaros",
+      "description": "Centenas de pássaros empoleirados na estrutura de um galpão. Eles estão silenciosos demais. Todos olham na mesma direção — para você.",
+      "type": "neutral", "requires_test": true,
+      "attribute": "Espírito", "skill": "Sobrevivência",
+      "success": "Você se move devagar, sem contato visual. Os pássaros não reagem.",
+      "failure": "Você corre e os pássaros explodem em voo. O barulho é ensurdecedor. Todo setor sabe que você está aqui agora.",
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 14, "title": "Gangue dos Sucateiros",
+      "description": "Um grupo de cinco pessoas armadas com ferramentas e uma liderança clara está desmontando um caminhão blindado. Eles te veem e um deles aponta uma espingarda.",
+      "type": "social", "requires_test": true,
+      "attribute": "Espírito", "skill": "Manipulação",
+      "success": "O líder te avalia e pergunta: 'Traz o quê?' Você negocia passagem segura por informação.",
+      "failure": "Eles não gostam de estranhos. 'Ou sai ou morre.'",
+      "rewards": {"info": "Eles mencionam um 'depósito de armas' no galpão 12."},
+      "leads_to_encounter": true, "encounter_type": "violent"
+    },
+    {
+      "roll": 15, "title": "Poço de Graxa",
+      "description": "Um poço de graxa industrial do tamanho de uma piscina. A superfície é lisa como vidro preto. Bolhas estouram ocasionalmente. Algo grande se move nas profundezas escuras.",
+      "type": "violent", "requires_test": false,
+      "leads_to_encounter": true, "encounter_type": "violent"
+    },
+    {
+      "roll": 16, "title": "Zumbido Elétrico",
+      "description": "Uma subestação elétrica ainda tem energia. Os fios expostos crepitam. O ar cheira a ozônio. No centro, um transformador pulsa com uma luz interna azul.",
+      "type": "resource", "requires_test": true,
+      "attribute": "Mente", "skill": "Tecnologia",
+      "success": "Você conecta uma bateria e consegue carregá-la totalmente.",
+      "failure": "Um curto cria uma faísca. Você leva um choque leve. Perde 1 de Saúde.",
+      "rewards": {"items": [{"name": "Bateria Cheia", "qty": 1}]},
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 17, "title": "Sala do Gerente",
+      "description": "A sala da gerência de uma fábrica está intacta. Café frio na caneca, papéis na mesa. Um diário do gerente: 'Dia 47 — Eles estão vindo pelos dutos. Não adianta lacrar.'",
+      "type": "discovery", "requires_test": false,
+      "rewards": {"info": "Os dutos de ventilação conectam todas as fábricas. Útil para locomoção — mas as criaturas também os usam."},
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 18, "title": "O Caldeirão",
+      "description": "Um caldeirão industrial enorme, ainda aquecido por uma fogueira. Dentro, um líquido grosso e escuro borbulha. Cultistas usam isso para algo. O cheiro é de chá de cogumelo podre.",
+      "type": "supernatural", "requires_test": false,
+      "leads_to_encounter": true, "encounter_type": "violent"
+    },
+    {
+      "roll": 19, "title": "Trilhos do Trem",
+      "description": "Uma linha de trem corta o setor. Os vagões estão tombados, mas um parece intacto. Dentro: caixas do exército. Suprimentos.",
+      "type": "resource", "requires_test": true,
+      "attribute": "Corpo", "skill": "Combate a Distância",
+      "success": "Você abre as caixas: rações militares e munição.",
+      "failure": "As caixas estão lacradas e você não tem ferramentas. O barulho do metal atrai curiosos.",
+      "rewards": {"food": 5, "items": [{"name": "Munição", "qty": 30}]},
+      "leads_to_encounter": true, "encounter_type": "neutral"
+    },
+    {
+      "roll": 20, "title": "A Máquina Viva",
+      "description": "No centro de uma fábrica, uma máquina gigante foi modificada. Cabos entram em corpos. Corpos alimentam a máquina. A máquina produz algo em esteiras: pequenas esferas pretas que vibram.",
+      "type": "story", "requires_test": false,
+      "special": "plot_hook",
+      "leads_to_encounter": false
+    }
+  ]
+}

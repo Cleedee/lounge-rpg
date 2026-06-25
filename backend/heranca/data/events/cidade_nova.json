@@ -1,0 +1,283 @@
+{
+  "sector": "cidade_nova",
+  "description": "Eventos da Cidade Nova — torres corporativas em ruínas e tecnologia corrompida.",
+  "die": "d20",
+  "events": [
+    {
+      "roll": 1,
+      "title": "Letreiro Fantasma",
+      "description": "Um letreiro de néon gigante pisca sem fonte de energia — uma propaganda de algo que não existe mais. Ao olhar fixamente, as letras formam palavras em uma língua que você quase entende.",
+      "type": "supernatural",
+      "requires_test": true,
+      "attribute": "Mente",
+      "skill": "Conhecimento",
+      "success": "Você desvia o olhar a tempo. Apenas um pesadelo passageiro.",
+      "failure": "Perde 1 de Vontade. A imagem do letreiro assombra seus pensamentos pelo resto do dia.",
+      "rewards": null,
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 2,
+      "title": "Saqueadores de Torres",
+      "description": "Um grupo de três sobreviventes está desmontando painéis solares no topo de um edifício baixo. Eles te viram e estão avaliando se você é ameaça ou recurso.",
+      "type": "social",
+      "requires_test": true,
+      "attribute": "Espírito",
+      "skill": "Manipulação",
+      "success": "Eles acenam e oferecem troca — um painel solar por comida ou munição.",
+      "failure": "Eles te encaram com hostilidade e apontam armas. É melhor sair.",
+      "rewards": null,
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 3,
+      "title": "Jardim Suspenso",
+      "description": "O terraço de um arranha-céu desabou, criando uma rampa de entulho coberta de vegetação. Morangos silvestres e ervas crescem entre as vigas retorcidas.",
+      "type": "resource",
+      "requires_test": true,
+      "attribute": "Corpo",
+      "skill": "Sobrevivência",
+      "success": "Você coleta 2 porções de comida fresca.",
+      "failure": "A estrutura cede e você quase cai. Não consegue levar nada.",
+      "rewards": {
+        "food": 2
+      },
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 4,
+      "title": "Elevador do Abismo",
+      "description": "As portas de um elevador de serviço estão abertas. O cabo principal ainda parece intacto. Lá embaixo, no subsolo, algo emite um brilho azulado fraco.",
+      "type": "discovery",
+      "requires_test": true,
+      "attribute": "Corpo",
+      "skill": "Atletismo",
+      "success": "Você desce pelo cabo e encontra um estoque de suprimentos médicos esquecidos.",
+      "failure": "O cabo range e você sobe de volta apressado. O barulho chamou atenção.",
+      "rewards": {
+        "medkit": 1
+      },
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 5,
+      "title": "Sirene Silenciosa",
+      "description": "Uma viatura policial abandonada está com o rádio ainda ligado. Estática. De repente, uma voz clara e calma sussurra: 'Eles sabem que você está aqui.'",
+      "type": "supernatural",
+      "requires_test": false,
+      "success": "Você revida o carro rapidamente e encontra uma pistola com 6 munições no porta-luvas.",
+      "failure": null,
+      "rewards": {
+        "items": [{"name": "Pistola", "qty": 1}, {"name": "Munição", "qty": 6}]
+      },
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 6,
+      "title": "Horda de Drones",
+      "description": "Uma nuvem de drones de vigilância pairou sobre a avenida principal. Eles não parecem mais seguir nenhum programação humana — seus olhos vermelhos varrem as ruas em busca de movimento.",
+      "type": "violent",
+      "requires_test": true,
+      "attribute": "Corpo",
+      "skill": "Subterfúgio",
+      "success": "Você se esconde a tempo. Os drones passam sem te detectar.",
+      "failure": "Os drones te detectam e emitem um alerta sônico agudo. Em minutos, algo maior virá.",
+      "rewards": null,
+      "leads_to_encounter": true,
+      "encounter_type": "violent"
+    },
+    {
+      "roll": 7,
+      "title": "Loja de Tecnologia",
+      "description": "Uma loja de eletrônicos foi parcialmente saqueada, mas o depósito dos fundos parece intacto. Baterias, cabos, e talvez algo útil.",
+      "type": "resource",
+      "requires_test": true,
+      "attribute": "Mente",
+      "skill": "Investigação",
+      "success": "Você encontra baterias de longa duração e um rádio portátil funcional.",
+      "failure": "O depósito está trancado e o alarme de emergência ainda funciona. O barulho vai atrair problemas.",
+      "rewards": {
+        "items": [{"name": "Baterias", "qty": 3}, {"name": "Rádio", "qty": 1}]
+      },
+      "leads_to_encounter": true,
+      "encounter_type": "violent"
+    },
+    {
+      "roll": 8,
+      "title": "Túnel Subterrâneo",
+      "description": "Uma entrada para o metrô abandonado está parcialmente desobstruída. Escuridão total. O eco de goteiras e... passos?",
+      "type": "discovery",
+      "requires_test": true,
+      "attribute": "Espírito",
+      "skill": "Investigação",
+      "success": "Você encontra um abrigo temporário seguro nos fundo do túnel, com cobertores e água potável.",
+      "failure": "Algo se mexeu na escuridão. Você sente que ser observado. Melhor sair.",
+      "rewards": null,
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 9,
+      "title": "Corpo no Banco",
+      "description": "Um corpo numa pose estranha está sentado em um banco da praça, com um diário no colo. As anotações são recentes — dias, não semanas.",
+      "type": "discovery",
+      "requires_test": true,
+      "attribute": "Mente",
+      "skill": "Investigação",
+      "success": "O diário contém informações sobre um abrigo seguro no Porto e a localização de um esconderijo de comida.",
+      "failure": "As páginas estão molhadas e ilegíveis. Mas o corpo tinha 20 munições no bolso.",
+      "rewards": {
+        "info": "Localização de esconderijo no Porto",
+        "items": [{"name": "Munição", "qty": 20}]
+      },
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 10,
+      "title": "Culto na Praça",
+      "description": "Figuras encapuzadas com tochas formam um círculo no centro da praça. Eles cantam em uníssono — e ele está respondendo. O chão treme levemente.",
+      "type": "violent",
+      "requires_test": false,
+      "description": "Três Cultistas realizam um ritual. Eles não te viram ainda.",
+      "leads_to_encounter": true,
+      "encounter_type": "violent"
+    },
+    {
+      "roll": 11,
+      "title": "Farmácia Abandonada",
+      "description": "Uma farmácia com as vitrines quebradas. Os saqueadores levaram os analgésicos, mas os antibióticos podem estar no estoque dos fundos.",
+      "type": "resource",
+      "requires_test": true,
+      "attribute": "Mente",
+      "skill": "Investigação",
+      "success": "Você encontra antibióticos e curativos.",
+      "failure": "Só sobrou xarope para tosse vencido e band-aids.",
+      "rewards": {
+        "items": [{"name": "Antibióticos", "qty": 1}, {"name": "Curativos", "qty": 3}]
+      },
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 12,
+      "title": "Sinal de Fumaça",
+      "description": "Uma coluna de fumaça sobe de um prédio a três quadras. Podem ser sobreviventes pedindo ajuda — ou uma armadilha.",
+      "type": "social",
+      "requires_test": true,
+      "attribute": "Espírito",
+      "skill": "Manipulação",
+      "success": "São sobreviventes amigáveis que compartilham comida e informação em troca de notícias de outros setores.",
+      "failure": "É uma armadilha de um grupo hostil. Você consegue fugir, mas perde 1 hora.",
+      "rewards": {
+        "food": 1,
+        "info": "Mapa mental dos arredores"
+      },
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 13,
+      "title": "Estática nos Fones",
+      "description": "Seu rádio portátil pega uma transmissão fraca: '...Arkham... diga... alguém...' A voz é distorcida, mas soa humana.",
+      "type": "story",
+      "requires_test": true,
+      "attribute": "Mente",
+      "skill": "Tecnologia",
+      "success": "Você consegue sintonizar melhor. A transmissão é de um grupo chamado 'A Voz de Arkham' — eles têm um abrigo fortificado na Universidade.",
+      "failure": "A transmissão se perde na estática. Mas você gravou a frequência.",
+      "rewards": {
+        "info": "Frequência de rádio: 107.3 FM — A Voz de Arkham"
+      },
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 14,
+      "title": "Toxinas Vazando",
+      "description": "Um caminhão-tanque tombado vaza um líquido verde fluorescente na sarjeta. O cheiro é químico e familiar demais. Bolhas se formam onde o líquido toca o asfalto.",
+      "type": "trap",
+      "requires_test": true,
+      "attribute": "Corpo",
+      "skill": "Atletismo",
+      "success": "Você contorna a área contaminada sem problemas.",
+      "failure": "Você inala os vapores. Tosse violenta e tontura. Perde 2 de Saúde e tem desvantagem em testes físicos na próxima hora.",
+      "rewards": null,
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 15,
+      "title": "Cachorro Leal",
+      "description": "Um vira-lata magro mas amigável se aproxima abanando o rabo. Ele tem uma coleira com nome: 'Coragem'. Parece estar sobrevivendo sozinho há semanas.",
+      "type": "neutral",
+      "requires_test": true,
+      "attribute": "Espírito",
+      "skill": "Sobrevivência",
+      "success": "Coragem decide te seguir. Ele pode ajudar a detectar perigos e encontrar comida.",
+      "failure": "Coragem foge quando você tenta se aproximar. Talvez na próxima.",
+      "rewards": {
+        "companion": "Coragem (cão)"
+      },
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 16,
+      "title": "Igreja Silenciosa",
+      "description": "Uma igreja com portas entreabertas. O sino dobra sozinho em intervalos regulares. Dentro, bancos arrumados e um silêncio pesado. O altar foi substituído por uma escultura de pedra que parece... úmida.",
+      "type": "supernatural",
+      "requires_test": true,
+      "attribute": "Mente",
+      "skill": "Conhecimento",
+      "success": "Você reconhece o símbolo na escultura — é um selo de contenção. Algo está preso no subsolo da igreja. Melhor não mexer.",
+      "failure": "Você ficou tempo demais olhando. A escultura parece ter se movido. Perde 1 de Vontade.",
+      "rewards": null,
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 17,
+      "title": "Acampamento Abandonado",
+      "description": "Uma barraca armada em um canto de praça, com pertences espalhados. Fogueira ainda morna. Quem estava aqui saiu com pressa.",
+      "type": "discovery",
+      "requires_test": true,
+      "attribute": "Mente",
+      "skill": "Investigação",
+      "success": "Você encontra enlatados, um isqueiro e um mapa rabiscado com anotações sobre 'a coisa no esgoto'.",
+      "failure": "Só encontrou roupas sujas e latas vazias.",
+      "rewards": {
+        "food": 3,
+        "items": [{"name": "Isqueiro", "qty": 1}],
+        "info": "Mapa do esgoto com anotações"
+      },
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 18,
+      "title": "A Bolha",
+      "description": "No meio da avenida, uma esfera translúcida do tamanho de um carro pulsa suavemente. O ar ao redor distorce como se fosse calor. Dentro da bolha, você jura ver uma rua de Arkham — mas intacta, viva, com pessoas andando.",
+      "type": "supernatural",
+      "requires_test": true,
+      "attribute": "Mente",
+      "skill": "Conhecimento",
+      "success": "Você entende que é uma fenda temporal. Tocar pode ser fatal. Você se afasta.",
+      "failure": "Você toca a bolha. A realidade se desfaz por um segundo. Você está em outro lugar — e volta com algo que não estava com você antes. Um objeto estranho e gelado.",
+      "rewards": {
+        "items": [{"name": "Artefato Desconhecido", "qty": 1}]
+      },
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 19,
+      "title": "Patrulha dos Insanos",
+      "description": "Um grupo de pessoas com roupas rasgadas marcha em formação militar precária. Eles carregam bastões e pedaços de metal. Cantam uma música que não faz sentido.",
+      "type": "violent",
+      "requires_test": false,
+      "leads_to_encounter": true,
+      "encounter_type": "violent"
+    },
+    {
+      "roll": 20,
+      "title": "O Poço",
+      "description": "Uma cratera perfeita de 10 metros de diâmetro no meio da rua. Não há escombros ao redor — como se o asfalto tivesse sido simplesmente removido. De dentro, umidade e o som de algo respirando.",
+      "type": "story",
+      "requires_test": false,
+      "description": "Esta é uma entrada para as profundezas. Marque no mapa. Pode ser um local de Acontecimento Importante no futuro.",
+      "leads_to_encounter": false,
+      "special": "plot_hook"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "description": "Tipos de Refúgio Base — local seguro para passar a noite e armazenar recursos.",
+  "refuges": [
+    {
+      "type": "Residência",
+      "location": "Escombros",
+      "defense": 50,
+      "space": 5,
+      "tech": 5,
+      "description": "Uma casa comum em meio aos escombros. Oferece proteção básica e espaço razoável."
+    },
+    {
+      "type": "Câmara",
+      "location": "Subterrâneo",
+      "defense": 70,
+      "space": 3,
+      "tech": 5,
+      "description": "Um porão ou abrigo subterrâneo. Muito seguro, mas espaço limitado."
+    },
+    {
+      "type": "Galpão",
+      "location": "Ruínas",
+      "defense": 30,
+      "space": 7,
+      "tech": 5,
+      "description": "Um galpão industrial semi-destruído. Muito espaço, mas difícil de defender."
+    },
+    {
+      "type": "Morada",
+      "location": "Litoral",
+      "defense": 50,
+      "space": 5,
+      "tech": 5,
+      "description": "Uma casa de praia ou cabana litorânea. Proteção mediana, vista para o mar."
+    },
+    {
+      "type": "Fazenda",
+      "location": "Ermo",
+      "defense": 30,
+      "space": 9,
+      "tech": 3,
+      "description": "Uma fazenda rural com muito espaço e potencial para plantio, mas isolada e frágil."
+    }
+  ],
+  "refuge_upgrades": [
+    {"name": "Muralha", "effect": "+10 defesa", "cost": 5, "resource": "madeira"},
+    {"name": "Horta", "effect": "Produz 1 comida/dia", "cost": 3, "resource": "sementes"},
+    {"name": "Gerador", "effect": "Energia elétrica", "cost": 5, "resource": "diesel"},
+    {"name": "Cisterna", "effect": "Produz 2 água/dia", "cost": 3, "resource": "tubos"},
+    {"name": "Oficina", "effect": "Conserta equipamentos", "cost": 4, "resource": "ferramentas"},
+    {"name": "Rádio", "effect": "Comunicação de longo alcance", "cost": 3, "resource": "eletrônicos"},
+    {"name": "Torre de Vigia", "effect": "Vantagem em detectar ataques de horda", "cost": 4, "resource": "madeira"}
+  ]
+}

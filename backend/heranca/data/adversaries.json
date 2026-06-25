@@ -1,0 +1,104 @@
+{
+  "description": "Adversários do cenário — bestiário lovecraftiano original.",
+  "adversaries": [
+    {
+      "id": "insano",
+      "name": "Insano",
+      "description": "Uma pessoa tomada pela loucura dos Grandes Antigos. Olhos vidrados, fala desconexa, violência imprevisível.",
+      "stats": {"saude": 6, "postura": 4, "vontade": 3},
+      "attack": {"name": "Golpe Selvagem", "damage": "Corpo"},
+      "reaction": "Ataca o sobrevivente mais próximo com um golpe corporal.",
+      "perigo": 1
+    },
+    {
+      "id": "cultista",
+      "name": "Cultista",
+      "description": "Devoto dos Grandes Antigos, usa vestes escuras e empunha uma faca ritualística. Organizado e metódico.",
+      "stats": {"saude": 8, "postura": 6, "vontade": 5},
+      "attack": {"name": "Faca Ritualística", "damage": "Corpo +1"},
+      "reaction": "Ataca com a faca ou tenta invocar auxílio (chama mais 1d3 Cultistas em 2 turnos).",
+      "perigo": 2
+    },
+    {
+      "id": "sacerdote_sombrio",
+      "name": "Sacerdote Sombrio",
+      "description": "Líder de um culto, capaz de canalizar o poder dos Antigos. Usa um cajado de osso e símbolos proibidos.",
+      "stats": {"saude": 12, "postura": 8, "vontade": 10},
+      "attack": {"name": "Cajado de Osso", "damage": "Corpo +2"},
+      "reaction": "No início de cada turno, role 1d6: 1-2 lança um raio de energia arcana (dano 4, à distância), 3-4 fortalece aliados (+1 ataque), 5-6 tenta drenar Vontade do alvo (perde 1 Vontade).",
+      "perigo": 3
+    },
+    {
+      "id": "desmorto",
+      "name": "Desmorto",
+      "description": "Um cadáver reanimado por forças obscuras. Lento, mas incansável. Não sente dor e não para.",
+      "stats": {"saude": 4, "postura": 0, "vontade": 0},
+      "attack": {"name": "Mordida", "damage": "Corpo"},
+      "reaction": "Avança e morde. Se atingir, agarra a vítima — ela tem desvantagem em testes de fuga.",
+      "perigo": 1
+    },
+    {
+      "id": "carnical",
+      "name": "Carniçal",
+      "description": "Uma criatura humanoide emaciada, pele cinzenta e garras afiadas. Caça em silêncio e prefere emboscadas.",
+      "stats": {"saude": 10, "postura": 3, "vontade": 2},
+      "attack": {"name": "Garras", "damage": "Corpo +2"},
+      "reaction": "Ataca com ambas as garras. Se ambas acertarem, causa dano extra de +2.",
+      "perigo": 2
+    },
+    {
+      "id": "insano_hibrido",
+      "name": "Insano Híbrido",
+      "description": "Um humano que passou por mutação parcial. Braços extras, olhos múltiplos, pele coberta de escamas ou carapaça. Força sobre-humana e loucura total.",
+      "stats": {"saude": 15, "postura": 5, "vontade": 1},
+      "attack": {"name": "Golpe Brutal", "damage": "Corpo +3"},
+      "reaction": "Ataca com força total. Se o alvo estiver com menos de 50% de Saúde, causa dano em vantagem.",
+      "perigo": 3
+    },
+    {
+      "id": "abissal",
+      "name": "Abissal",
+      "description": "Uma criatura dos profundos oceanos trazida pelos Grandes Antigos. Pele escorregadia, brânquias pulsantes, dentes em camadas. Move-se em terra e água.",
+      "stats": {"saude": 14, "postura": 6, "vontade": 4},
+      "attack": {"name": "Mordida Profunda", "damage": "Corpo +3"},
+      "reaction": "Ataca com mordida. Se o alvo estiver ferido, o Abissal sente o cheiro de sangue e tem vantagem no próximo ataque.",
+      "perigo": 3
+    },
+    {
+      "id": "dagon",
+      "name": "Dagon",
+      "description": "Um gigante dos mares, metade homem metade peixe, com 4 metros de altura. Carrega um arpão de osso e sua pele é grossa como aço.",
+      "stats": {"saude": 30, "postura": 12, "vontade": 8},
+      "attack": {"name": "Arpão de Osso", "damage": "Corpo +5"},
+      "reaction": "Ataca com o arpão. Se o ataque acertar, o alvo é puxado para perto e fica imobilizado por 1 turno.",
+      "perigo": 4
+    },
+    {
+      "id": "fantasma",
+      "name": "Fantasma",
+      "description": "Uma manifestação etérea de alguém que morreu em sofrimento. Não pode ser tocado, mas pode tocar você. Causa dano direto à Vontade.",
+      "stats": {"saude": "—", "postura": 10, "vontade": 10},
+      "attack": {"name": "Toque Gélido", "damage": "Mente (dano de Vontade)"},
+      "reaction": "Ataca a Mente do alvo em vez do Corpo. Dano é aplicado na Vontade. Inimigos físicos não podem atingi-lo sem armas encantadas ou rituais.",
+      "perigo": 3
+    },
+    {
+      "id": "fantasma_ancestral",
+      "name": "Fantasma Ancestral",
+      "description": "Uma entidade antiga, anterior à humanidade. Mais poderoso que um fantasma comum. Sua presença distorce a realidade ao redor.",
+      "stats": {"saude": "—", "postura": 15, "vontade": 15},
+      "attack": {"name": "Grito do Vazio", "damage": "5 de Vontade (à distância)"},
+      "reaction": "No início de cada turno, todos os sobreviventes no mesmo setor perdem 1 de Vontade só por estar perto. Ataque de Toque Gélido causa dano dobrado.",
+      "perigo": 4
+    },
+    {
+      "id": "sobrevivente_hostil",
+      "name": "Sobrevivente Hostil",
+      "description": "Outro sobrevivente que decidiu que a lei do mais forte é a única lei. Armado e perigoso.",
+      "stats": {"saude": 8, "postura": 5, "vontade": 5},
+      "attack": {"name": "Arma de Fogo", "damage": "Corpo +2"},
+      "reaction": "Ataca à distância. Se estiver em vantagem numérica, tenta flanquear.",
+      "perigo": 2
+    }
+  ]
+}

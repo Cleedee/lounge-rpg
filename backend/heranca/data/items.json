@@ -1,0 +1,45 @@
+{
+  "description": "Itens, armas e armaduras do cenário.",
+  "weapons": [
+    {"name": "Desarmado", "damage": "Corpo", "hands": "—", "type": "body"},
+    {"name": "Faca", "damage": "Corpo +1", "hands": 1, "type": "melee"},
+    {"name": "Punhal", "damage": "Corpo +1", "hands": 1, "type": "melee"},
+    {"name": "Soqueira", "damage": "Corpo +1", "hands": 1, "type": "melee"},
+    {"name": "Facão", "damage": "Corpo +2", "hands": 1, "type": "melee"},
+    {"name": "Espada", "damage": "Corpo +2", "hands": 1, "type": "melee"},
+    {"name": "Martelo", "damage": "Corpo +2", "hands": 2, "type": "melee"},
+    {"name": "Machado", "damage": "Corpo +3", "hands": 2, "type": "melee"},
+    {"name": "Espada Larga", "damage": "Corpo +3", "hands": 2, "type": "melee"},
+    {"name": "Arco e Flecha", "damage": "Corpo +1", "hands": 2, "type": "ranged"},
+    {"name": "Pistola", "damage": "Corpo +1", "hands": 1, "type": "ranged"},
+    {"name": "Revólver", "damage": "Corpo +1", "hands": 1, "type": "ranged"},
+    {"name": "Espingarda", "damage": "Corpo +2", "hands": 2, "type": "ranged"},
+    {"name": "Escopeta", "damage": "Corpo +2", "hands": 2, "type": "ranged"},
+    {"name": "Metralhadora", "damage": "Corpo +3", "hands": 2, "type": "ranged"},
+    {"name": "Fuzil", "damage": "Corpo +3", "hands": 2, "type": "ranged"},
+    {"name": "Granada", "damage": "6 fixo", "hands": 1, "type": "explosive"},
+    {"name": "Explosivo Fraco", "damage": "8 fixo", "hands": 1, "type": "explosive"},
+    {"name": "Explosivo Forte", "damage": "15 fixo", "hands": 1, "type": "explosive"}
+  ],
+  "armor": [
+    {"name": "Roupa Pesada", "reduction": 1, "penalty": null},
+    {"name": "Colete Leve", "reduction": 1, "penalty": null},
+    {"name": "Colete Pesado", "reduction": 2, "penalty": null},
+    {"name": "Armadura de Couro", "reduction": 2, "penalty": "Desvantagem em testes de Corpo de destreza/agilidade"},
+    {"name": "Armadura Tática", "reduction": 3, "penalty": null},
+    {"name": "Armadura Medieval", "reduction": 3, "penalty": "Desvantagem em testes de Corpo de destreza/agilidade"},
+    {"name": "Escudo", "reduction": 1, "penalty": "Desvantagem em testes de Corpo de destreza/agilidade"}
+  ],
+  "resources": {
+    "medkit": {"name": "Kit Médico", "description": "Cura 3 de Saúde. Uso único."},
+    "antibioticos": {"name": "Antibióticos", "description": "Cura infecções. Necessário após ferimentos sujos."},
+    "analgesicos": {"name": "Analgésicos", "description": "Remove desvantagem por dor por 4 horas."},
+    "curativos": {"name": "Curativos", "description": "Cura 1 de Saúde. Uso único."},
+    "racao_militar": {"name": "Ração Militar", "description": "Uma refeição completa. Vale 1 comida."},
+    "enlatado": {"name": "Enlatado", "description": "Comida preservada. Vale 1 comida."},
+    "agua_limpa": {"name": "Água Limpa", "description": "Água potável. Vale 1 água."},
+    "diesel": {"name": "Diesel", "description": "Combustível para veículos e geradores."},
+    "bateria": {"name": "Bateria", "description": "Bateria de longa duração para equipamentos eletrônicos."},
+    "municao": {"name": "Munição", "description": "Munição de calibre comum. Necessária para armas de fogo."}
+  }
+}

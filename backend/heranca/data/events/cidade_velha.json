@@ -1,0 +1,182 @@
+{
+  "sector": "cidade_velha",
+  "description": "Eventos da Cidade Velha — ruas de pedra, segredos antigos e cultos enraizados.",
+  "die": "d20",
+  "events": [
+    {
+      "roll": 1, "title": "Procissão Silenciosa",
+      "description": "Uma fila de figuras encapuzadas atravessa a rua principal em completo silêncio. Eles carregam velas acesas que queram com chama verde. Não parecem ter notado você.",
+      "type": "supernatural", "requires_test": true,
+      "attribute": "Corpo", "skill": "Subterfúgio",
+      "success": "Você se mantém imóvel e eles passam sem te ver. Você ouve um deles sussurrar: 'O próximo despertar é no solstício.'",
+      "failure": "Você pisou em um caco de vidro. Eles ouvem e param. Lentamente, todas as cabeças viram na sua direção.",
+      "leads_to_encounter": true, "encounter_type": "violent"
+    },
+    {
+      "roll": 2, "title": "Biblioteca dos Loucos",
+      "description": "A biblioteca pública está parcialmente de pé. Um homem idoso senta entre as estantes, lendo em voz alta para ninguém. Ele parece são — mas o livro que ele lê está em branco.",
+      "type": "social", "requires_test": true,
+      "attribute": "Espírito", "skill": "Manipulação",
+      "success": "O velho sorri e diz: 'Você veio pelas páginas que faltam.' Ele entrega um caderno com anotações sobre rituais dos Grandes Antigos.",
+      "failure": "O velho te encara com olhos completamente pretos e grita: 'SAIA!' Você sai correndo.",
+      "rewards": {"items": [{"name": "Caderno de Anotações Ocultas", "qty": 1}]},
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 3, "title": "Cemitério Revolvido",
+      "description": "O cemitério da igreja foi escavado. Não por humanos — as covas estão abertas de dentro para fora. Pegadas lamacentas levam para a cidade.",
+      "type": "violent", "requires_test": false,
+      "leads_to_encounter": true, "encounter_type": "violent"
+    },
+    {
+      "roll": 4, "title": "Fonte dos Desejos",
+      "description": "Uma fonte antiga no centro da praça ainda tem água limpa e cristalina. Moedas brilham no fundo. Uma placa diz: 'Jogue uma moeda e faça um pedido.' As moedas são de ouro.",
+      "type": "supernatural", "requires_test": true,
+      "attribute": "Mente", "skill": "Conhecimento",
+      "success": "Você reconhece o símbolo gravado na fonte — é um蚁神 dos Profundos. Pegar as moedas sem oferenda trará má sorte. Você deixa um pedaço de comida e pega 1 moeda.",
+      "failure": "Você pega várias moedas. A água da fonte fica vermelha por um instante. Você sente que algo foi acordado.",
+      "rewards": {"items": [{"name": "Moedas de Ouro Antigas", "qty": 3}]},
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 5, "title": "Taverna Silenciosa",
+      "description": "Uma taverna centenária está com a porta entreaberta. Dentro, velas acesas, copos sobre a mesa — como se os clientes tivessem evaporado. Uma sopa ainda quente está no balcão.",
+      "type": "discovery", "requires_test": true,
+      "attribute": "Mente", "skill": "Investigação",
+      "success": "Você encontra um alçapão no depósito. Leva a uma adega com suprimentos estocados.",
+      "failure": "A taverna range e estala. Você sente que não está sozinho. Melhor sair.",
+      "rewards": {"food": 4, "items": [{"name": "Vinho", "qty": 2}]},
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 6, "title": "O Relógio da Torre",
+      "description": "A torre do relógio da praça central ainda funciona. Mas ele marca 3:33 constantemente — e o sino dobra 13 vezes a cada hora. Moradores locais (se houver) evitam olhar para ele.",
+      "type": "story", "requires_test": false,
+      "rewards": {"info": "O relógio marca 3:33 — a hora em que algo aconteceu. Talvez seja a chave para um Acontecimento Importante."},
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 7, "title": "Crianças do Beco",
+      "description": "Três crianças magras mas vivas brincam em um beco com carrinhos enferrujados. Elas riem. Quando te veem, acenam sem medo.",
+      "type": "social", "requires_test": true,
+      "attribute": "Espírito", "skill": "Manipulação",
+      "success": "Elas confiam em você e mostram onde esconderam comida. 'A Tia Maria disse pra compartilhar.'",
+      "failure": "Elas fogem para um bueiro. Uma delas grita: 'A Tia Maria disse pra não falar com estranhos!'",
+      "rewards": {"food": 2},
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 8, "title": "Portal no Porão",
+      "description": "A escada de um porão aberto exala um ar gelado e seco. Lá embaixo, um arco de pedra coberto de entalhes brilha fracamente. Não é uma construção humana.",
+      "type": "supernatural", "requires_test": true,
+      "attribute": "Mente", "skill": "Conhecimento",
+      "success": "O arco é um marco de Ley — um ponto onde a realidade é fina. Você pode sentir o poder, mas também o perigo. Você marca o local.",
+      "failure": "Você se aproxima demais. O arco pulsa e você ouve sussurros em uma língua antiga. Perde 1 de Vontade.",
+      "leads_to_encounter": false, "special": "plot_hook"
+    },
+    {
+      "roll": 9, "title": "Sobrevivente Escondido",
+      "description": "Alguém bate em uma janela do segundo andar. Uma mulher com um bebê nos braços faz sinais para você se esconder. Ela aponta para a esquina.",
+      "type": "neutral", "requires_test": true,
+      "attribute": "Corpo", "skill": "Subterfúgio",
+      "success": "Você se esconde a tempo. Uma patrulha de Insanos passa sem te ver. Depois, a mulher desce e te agradece com um frasco de remédio.",
+      "failure": "A patrulha te vê. Você precisa correr.",
+      "rewards": {"items": [{"name": "Remédio", "qty": 1}]},
+      "leads_to_encounter": true, "encounter_type": "violent"
+    },
+    {
+      "roll": 10, "title": "Mercado Negro",
+      "description": "Em uma praça coberta, alguns sobreviventes montaram uma feira de troca. Produtos estranhos: latas sem rótulo, pilhas, um olho num pote, informações.",
+      "type": "social", "requires_test": true,
+      "attribute": "Espírito", "skill": "Manipulação",
+      "success": "Você consegue trocar recursos por informações valiosas: a localização de um abrigo seguro no Centro Industrial.",
+      "failure": "Os preços são absurdos ou os vendedores não confiam em você. Você não consegue nada.",
+      "rewards": {"info": "Abrigo seguro no Centro Industrial: galpão 47, código de acesso 4912"},
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 11, "title": "Os Sinos",
+      "description": "Os sinos da igreja começam a tocar sozinhos. Não há vento. Não há ninguém na torre. O som é ensurdecedor e errado — como se cada badalada estivesse fora de sincronia com a realidade.",
+      "type": "supernatural", "requires_test": true,
+      "attribute": "Mente", "skill": "Investigação",
+      "success": "Você cobre os ouvidos e se abriga dentro de uma loja até passar. Quando os sinos param, o silêncio é absoluto.",
+      "failure": "O som dos sinos perfura sua cabeça. Perde 2 de Vontade. Você fica atordoado por 30 minutos.",
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 12, "title": "Gato Preto",
+      "description": "Um gato preto enorme cruza seu caminho e para. Ele te encara com olhos amarelos que parecem antigos demais. Ele mia uma vez e começa a andar, parando para ver se você segue.",
+      "type": "discovery", "requires_test": true,
+      "attribute": "Espírito", "skill": "Sobrevivência",
+      "success": "Você segue o gato. Ele te leva a um sótão abandonado com comida enlatada e um colchão seco.",
+      "failure": "Você perde o gato de vista. Mas ele deixou um rastro — uma pena preta que brilha no escuro.",
+      "rewards": {"food": 3},
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 13, "title": "Muralha de Carne",
+      "description": "Uma parede de carne pulsante e orgânica bloqueia uma rua inteira. Ela tem veias, olhos fechados e bocas que murmurem. O cheiro é de hospital e maré baixa.",
+      "type": "violent", "requires_test": false,
+      "leads_to_encounter": true, "encounter_type": "violent"
+    },
+    {
+      "roll": 14, "title": "Universidade em Ruínas",
+      "description": "O campus da Universidade Miskatonic está semi-destruído, mas a biblioteca principal parece intacta. Livros raros podem ter sobrevivido.",
+      "type": "discovery", "requires_test": true,
+      "attribute": "Mente", "skill": "Investigação",
+      "success": "Você encontra um livro sobre simbologia dos Grandes Antigos. Pode ser útil para decifrar marcas rituais.",
+      "failure": "A biblioteca desabou parcialmente. Você quase fica preso.",
+      "rewards": {"items": [{"name": "Compêndio de Simbologia Arcana", "qty": 1}]},
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 15, "title": "Poço dos Desejos",
+      "description": "Um poço antigo no pátio de uma faculdade. Alguém escreveu a giz no chão: 'Jogue algo que você ama. Receberá algo que precisa.' Dentro do poço, brilho fraco.",
+      "type": "supernatural", "requires_test": false,
+      "rewards": {"items": [{"name": "Gema Brilhante", "qty": 1}]},
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 16, "title": "O Padeiro",
+      "description": "Uma padaria funciona. Pão fresco. O padeiro é um homem calvo e sorridente que parece não notar o apocalipse. O pão é bom. Talvez bom demais.",
+      "type": "social", "requires_test": true,
+      "attribute": "Mente", "skill": "Conhecimento",
+      "success": "Você percebe que o pão tem um gosto metálico estranho. O padeiro insiste para você comer mais. Você recusa educadamente e sai.",
+      "failure": "Você come o pão. Está delicioso. Mas uma hora depois, você ouve vozes sussurrando. Algo mudou.",
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 17, "title": "Túnel de Fuga",
+      "description": "Um bueiro destampado revela uma escada descendo para os túneis de esgoto. Alguém gravou uma seta na parede apontando para leste com a palavra 'VIVOS'.",
+      "type": "discovery", "requires_test": true,
+      "attribute": "Mente", "skill": "Sobrevivência",
+      "success": "Você segue a seta e encontra um pequeno abrigo com água limpa e um rádio.",
+      "failure": "O túnel está alagado e o cheiro é insuportável. Você volta.",
+      "rewards": {"info": "Abrigo subterrâneo no setor leste"},
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 18, "title": "Pinturas Vivas",
+      "description": "Uma galeria de arte tem pinturas intactas. Mas as figuras nas telas se movem quando você não olha diretamente. Uma pintura mostra você — entrando na galeria.",
+      "type": "supernatural", "requires_test": false,
+      "rewards": null,
+      "leads_to_encounter": false,
+      "special": "plot_hook"
+    },
+    {
+      "roll": 19, "title": "Cultistas em Oração",
+      "description": "Doze figuras ajoelhadas em círculo na praça central. Elas não estão armadas — apenas rezam para uma estátua de pedra que parece estar se movendo muito lentamente.",
+      "type": "violent", "requires_test": false,
+      "leads_to_encounter": true, "encounter_type": "violent"
+    },
+    {
+      "roll": 20, "title": "O Livro na Estante",
+      "description": "Uma livraria antiga está parcialmente de pé. Na vitrine, um único livro parece intocado pela poeira: 'Sobre o Contato com Entidades Exteriores' — Autor: Desconhecido.",
+      "type": "story", "requires_test": false,
+      "description": "O livro parece importante. Pode conter informações sobre como selar os portais ou comunicar com os Antigos sem enlouquecer.",
+      "rewards": {"items": [{"name": "Livro Antigo", "qty": 1}]},
+      "leads_to_encounter": false,
+      "special": "plot_hook"
+    }
+  ]
+}

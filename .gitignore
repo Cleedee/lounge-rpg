@@ -3,7 +3,7 @@ __pycache__/
 *.py[cod]
 *.pyo
 *.egg-info/
-dist/
+/dist/
 *.egg
 
 # ─── Environment files ──────────────────────────────────
@@ -12,7 +12,7 @@ dist/
 .env.*.local
 
 # ─── Database ───────────────────────────────────────────
-data/
+/data/
 *.db
 *.sqlite
 *.sqlite3

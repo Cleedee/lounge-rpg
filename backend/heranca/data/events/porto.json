@@ -1,0 +1,181 @@
+{
+  "sector": "porto",
+  "description": "Eventos do Porto — docas podres, navios encalhados, horrores aquáticos.",
+  "die": "d20",
+  "events": [
+    {
+      "roll": 1, "title": "Navio Encalhado",
+      "description": "Um cargueiro de médio porte está encalhado no cais, inclinado. A escotida principal está aberta. De dentro, luz fraca e o som de água gotejando.",
+      "type": "discovery", "requires_test": true,
+      "attribute": "Corpo", "skill": "Atletismo",
+      "success": "Você embarca e encontra o almoço da tripulação ainda na mesa. Enlatados e água potável.",
+      "failure": "A escada Range e você escorrega. Torce o tornozelo. Perde 1 de Saúde.",
+      "rewards": {"food": 4, "water": 4},
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 2, "title": "Cultistas do Profundo",
+      "description": "Um grupo de pessoas com túnicas molhadas realiza um ritual na beira do cais. Eles jogaram algo na água — ou alguém. A água está agitada.",
+      "type": "violent", "requires_test": false,
+      "leads_to_encounter": true, "encounter_type": "violent"
+    },
+    {
+      "roll": 3, "title": "Contêiner Flutuante",
+      "description": "Um contêiner lacrado boia perto do cais. A etiqueta diz: 'Espécimes Biológicos — MANTER REFRIGERADO'. Está quente por fora.",
+      "type": "trap", "requires_test": true,
+      "attribute": "Mente", "skill": "Investigação",
+      "success": "Você ouve movimento dentro. Algo vivo. Melhor não abrir.",
+      "failure": "Você abre. O que sai não deveria existir. Fuja.",
+      "leads_to_encounter": true, "encounter_type": "violent"
+    },
+    {
+      "roll": 4, "title": "Pesca Sombria",
+      "description": "Um homem solitário pesca no cais. O balde ao lado está cheio de peixes prateados — mas eles têm olhos humanos. O homem não parece surpreso. 'É o que tem pra jantar.'",
+      "type": "social", "requires_test": true,
+      "attribute": "Espírito", "skill": "Manipulação",
+      "success": "O pescador compartilha um peixe (comida) e avisa: 'Não pesque depois do anoitecer. Eles mordem de volta.'",
+      "failure": "O homem te ignora completamente. Ele murmura algo sobre 'o preço da maré'.",
+      "rewards": {"food": 1},
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 5, "title": "Gasolina",
+      "description": "Um posto de combustível portuário está parcialmente intacto. Uma bomba ainda tem diesel. O tanque subterrâneo pode estar cheio.",
+      "type": "resource", "requires_test": true,
+      "attribute": "Mente", "skill": "Tecnologia",
+      "success": "Você consegue bombear 20 litros de diesel.",
+      "failure": "A bomba está emperrada. O mau cheiro de combustível velho é forte demais.",
+      "rewards": {"items": [{"name": "Diesel", "qty": 20}]},
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 6, "title": "O Farol",
+      "description": "O farol do porto está aceso. Ele gira e ilumina o mar. Mas não há ninguém para mantê-lo. A luz revela algo na água — uma forma grande se movendo em círculos.",
+      "type": "supernatural", "requires_test": true,
+      "attribute": "Mente", "skill": "Conhecimento",
+      "success": "A forma é um dos Profundos. Ele está cercando o porto. Você sabe que não deve chamar sua atenção.",
+      "failure": "A luz do farol te cega por um instante. Quando recupera a visão, a forma está mais perto.",
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 7, "title": "Navio Fantasma",
+      "description": "Um veleiro antigo, impecável, atracado como se tivesse acabado de chegar. A madeira é nova. As velas estão brancas. Não há som a bordo.",
+      "type": "supernatural", "requires_test": false,
+      "special": "plot_hook",
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 8, "title": "Armazém de Especiarias",
+      "description": "Um armazém com sacos de especiarias e grãos. Ratos enormes fugiram quando você entrou. O ar é denso de cheiros antigos. Algo brilha entre os sacos.",
+      "type": "discovery", "requires_test": true,
+      "attribute": "Mente", "skill": "Investigação",
+      "success": "Você encontra um colar de prata com um símbolo de proteção. Pode ser antigo, mas parece genuíno.",
+      "failure": "Os ratos são maiores que você pensava. Eles não fogem mais.",
+      "rewards": {"items": [{"name": "Colar de Proteção", "qty": 1}], "food": 3},
+      "leads_to_encounter": true, "encounter_type": "violent"
+    },
+    {
+      "roll": 9, "title": "Corpo na Rede",
+      "description": "Uma rede de pesca enorme foi içada entre dois guindastes. Dentro, dezenas de peixes estranhos — e um corpo humano parcialmente digerido por algo que não foi peixe.",
+      "type": "neutral", "requires_test": true,
+      "attribute": "Mente", "skill": "Sobrevivência",
+      "success": "Você reconhece os ferimentos — são de mordidas humanoides. Há algo inteligente na água.",
+      "failure": "Você passa mal com a visão. Perde 1 de Vontade.",
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 10, "title": "O Submarino",
+      "description": "Um submarino militar de pequeno porte está atracado no cais militar. A escotilha está aberta. Alguém esteve aqui recentemente.",
+      "type": "discovery", "requires_test": true,
+      "attribute": "Mente", "skill": "Tecnologia",
+      "success": "O submarino tem um rádio de longo alcance funcionando. Você pode tentar chamar outros sobreviventes.",
+      "failure": "O sistema elétrico do submarino está instável. Você leva um choque.",
+      "rewards": {"info": "Coordenadas de outros sobreviventes transmitindo no mar"},
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 11, "title": "Maré Negra",
+      "description": "A água do mar está preta como tinta. Não é óleo. A maré sobe, e onde a água preta toca a pedra, ela chia. O ar fica pesado.",
+      "type": "trap", "requires_test": true,
+      "attribute": "Corpo", "skill": "Atletismo",
+      "success": "Você corre para terreno mais alto. A maré preta não te alcança.",
+      "failure": "A água preta salpica sua perna. A pele queima. Perde 2 de Saúde.",
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 12, "title": "Contrabandistas",
+      "description": "Três pessoas com carrinhos de mão carregam caixas de um contêiner para uma van. Eles estão armados mas parecem mais cansados que perigosos.",
+      "type": "social", "requires_test": true,
+      "attribute": "Espírito", "skill": "Manipulação",
+      "success": "Eles aceitam ajuda em troca de pagamento. Você ganha 3 moedas de ouro.",
+      "failure": "Eles apontam armas. 'Some daqui.'",
+      "rewards": {"items": [{"name": "Moedas de Ouro", "qty": 3}]},
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 13, "title": "Guindaste Instável",
+      "description": "Um guindaste portuário range com o vento. No topo, um ninho enorme de gravetos e metal retorcido. Algo grande mora lá em cima.",
+      "type": "violent", "requires_test": false,
+      "leads_to_encounter": true, "encounter_type": "violent"
+    },
+    {
+      "roll": 14, "title": "Estaleiro Abandonado",
+      "description": "Um navio em construção foi abandonado no meio do estaleiro. O casco está parcialmente montado. Dentro, ferramentas, cabanas improvisadas, e o cheiro de fumaça recente.",
+      "type": "discovery", "requires_test": true,
+      "attribute": "Mente", "skill": "Investigação",
+      "success": "Alguém morou aqui. Você encontra um colchão, comida enlatada e um diário com mapas do setor.",
+      "failure": "O local já foi saqueado. Nada de valor.",
+      "rewards": {"food": 2, "info": "Mapa do Porto com rotas de fuga marcadas"},
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 15, "title": "Sereia Podre",
+      "description": "Uma criatura humanoide com escamas podres e brânquias abertas está encalhada no cais. Ela ainda respira. Olhos brancos te encaram. Ela sussurra: 'O ciclo começa novamente.'",
+      "type": "supernatural", "requires_test": false,
+      "rewards": null,
+      "special": "plot_hook",
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 16, "title": "Onda de Névoa",
+      "description": "Uma névoa espessa e salgada cobre o porto em minutos. A visibilidade cai para 2 metros. Na névoa, sons de correntes arrastando e passos molhados.",
+      "type": "supernatural", "requires_test": true,
+      "attribute": "Corpo", "skill": "Subterfúgio",
+      "success": "Você se agacha e espera. A névoa passa sem incidentes.",
+      "failure": "Algo toca suas costas. Você corre sem olhar para trás. Perde 1 de Vontade.",
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 17, "title": "Oceanário",
+      "description": "O oceanário público está destruído, mas tanques enormes ainda têm água. E vida. Vitrines quebradas revelam criaturas que evoluíram rápido demais nos últimos meses.",
+      "type": "violent", "requires_test": false,
+      "leads_to_encounter": true, "encounter_type": "violent"
+    },
+    {
+      "roll": 18, "title": "Caixa de Munição Naval",
+      "description": "Um contêiner militar submerso perto do cais. Com cordas e esforço, dá para puxar. A etiqueta: 'Projéteis 20mm — Uso Exclusivo da Marinha'.",
+      "type": "resource", "requires_test": true,
+      "attribute": "Corpo", "skill": "Atletismo",
+      "success": "Você puxa o contêiner. Dentro: 15 projéteis de alto calibre.",
+      "failure": "O contêiner está preso no fundo. Você quase cai na água.",
+      "rewards": {"items": [{"name": "Projéteis 20mm", "qty": 15}]},
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 19, "title": "O Mercado de Peixes",
+      "description": "O mercado de peixes tem um cheiro insuportável. Mas os ganchos ainda têm peixes pendurados — alguns frescos. E uma geladeira industrial ainda funciona a diesel.",
+      "type": "resource", "requires_test": true,
+      "attribute": "Corpo", "skill": "Sobrevivência",
+      "success": "Você seleciona os peixes bons. 3 porções de comida.",
+      "failure": "Os peixes estão todos estragados. O cheiro te faz vomitar.",
+      "rewards": {"food": 3},
+      "leads_to_encounter": false
+    },
+    {
+      "roll": 20, "title": "Colônia de Insanos",
+      "description": "Uma colônia inteira de Insanos se instalou no terminal de contêineres. Eles construíram torres de contêineres empilhados e acendem fogueiras no topo. Cantam sem parar.",
+      "type": "violent", "requires_test": false,
+      "leads_to_encounter": true, "encounter_type": "violent"
+    }
+  ]
+}

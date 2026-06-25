@@ -1,0 +1,45 @@
+{
+  "description": "Mapa de setores de Arkham — A Herança de Cthulhu (conteúdo original)",
+  "sectors": [
+    {
+      "id": "cidade_nova",
+      "name": "Cidade Nova",
+      "description": "Arranha-céus em ruínas, letreiros de néon ainda piscando, data centers saqueados. O poder corporativo que um dia governou Arkham agora é apenas mais uma camada de escombros.",
+      "connections": ["cidade_velha", "centro_industrial"],
+      "danger_level": 2,
+      "event_table": "events/cidade_nova.json"
+    },
+    {
+      "id": "cidade_velha",
+      "name": "Cidade Velha",
+      "description": "Ruas de paralelepípedo, igrejas seculares, prédios universitários. Os cultistas tomaram conta dos porões e túneis subterrâneos que conectam os edifícios históricos.",
+      "connections": ["cidade_nova", "porto", "ermos"],
+      "danger_level": 3,
+      "event_table": "events/cidade_velha.json"
+    },
+    {
+      "id": "centro_industrial",
+      "name": "Centro Industrial",
+      "description": "Fábricas abandonadas, galpões enormes, ferros-velho. Antigos poços de toxinas químicas criaram criaturas que não deveriam existir. O som de metal rangendo ecoa 24 horas.",
+      "connections": ["cidade_nova", "porto"],
+      "danger_level": 4,
+      "event_table": "events/centro_industrial.json"
+    },
+    {
+      "id": "porto",
+      "name": "Porto",
+      "description": "Docas apodrecidas, navios encalhados, contêineres enferrujados. Algo gigante se move nas águas escuras. Os pescadores que restaram não pescam mais peixes.",
+      "connections": ["cidade_velha", "centro_industrial", "ermos"],
+      "danger_level": 3,
+      "event_table": "events/porto.json"
+    },
+    {
+      "id": "ermos",
+      "name": "Ermos",
+      "description": "Campos áridos, fazendas abandonadas, estradas rurais que não levam a lugar nenhum. A geometria dos campos parece errada — como se alguém tivesse redesenhado o horizonte.",
+      "connections": ["cidade_velha", "porto"],
+      "danger_level": 2,
+      "event_table": "events/ermos.json"
+    }
+  ]
+}

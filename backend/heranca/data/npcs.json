@@ -1,0 +1,59 @@
+{
+  "description": "Personagens Importantes — tabela combinada de tipo + característica.",
+  "types": [
+    "Um sobrevivente solitário",
+    "Um velho senhor",
+    "Uma moça muito bonita",
+    "Um rapaz muito esperto",
+    "Um velho militar",
+    "Uma senhora de olhos claros",
+    "Um morador de rua",
+    "Um caçador de Insanos",
+    "Um velho feiticeiro",
+    "Um sobrevivente aliado"
+  ],
+  "traits": [
+    "que conhece todo mundo.",
+    "com histórico de violência.",
+    "que te deve um favor.",
+    "com problemas psiquiátricos.",
+    "com muitas informações para repassar.",
+    "viciado em drogas/remédios.",
+    "de quem você guarda segredos importantes.",
+    "amaldiçoado por um feitiço.",
+    "que sempre te ajuda.",
+    "que dizem ser um Cultista."
+  ],
+  "notable_npcs": [
+    {
+      "name": "Tia Maria",
+      "description": "Uma senhora que cuida de crianças órfãs na Cidade Velha. Conhece cada beco e cada túnel. Sabe de tudo que acontece no setor.",
+      "location": "cidade_velha",
+      "attitude": "amigável"
+    },
+    {
+      "name": "Coronel Mendes",
+      "description": "Ex-militar que comanda um grupo de sobreviventes no Centro Industrial. Disciplinado, desconfiado, mas justo.",
+      "location": "centro_industrial",
+      "attitude": "neutro"
+    },
+    {
+      "name": "Yara",
+      "description": "Uma jovem que vive no Porto e conhece cada navio encalhado. Sabe onde encontrar suprimentos e como evitar as criaturas aquáticas.",
+      "location": "porto",
+      "attitude": "amigável"
+    },
+    {
+      "name": "O Eremita",
+      "description": "Um homem idoso que vive sozinho nos Ermos há décadas. Parece saber mais sobre os Grandes Antigos do que deveria.",
+      "location": "ermos",
+      "attitude": "enigmático"
+    },
+    {
+      "name": "Doutora Schmidt",
+      "description": "Médica sobrevivente que montou uma clínica improvisada na Cidade Nova. Cura ferimentos em troca de suprimentos ou informação.",
+      "location": "cidade_nova",
+      "attitude": "amigável"
+    }
+  ]
+}
