@@ -1,0 +1,37 @@
+[
+  {
+    "id": "NeonScratchLounge",
+    "type": "location",
+    "description": "O QG da resistência. Um bar de jazz mal iluminado que cheira a atum e couro velho. Propriedade de Madame Fluffington, uma gata persa antiga que conhece todos os segredos de Neo-Pawsburg. Zona segura — nenhum drone RoombaCore opera aqui.",
+    "encounters": [],
+    "npcs": ["MadameFluffington", "GlitchTheTechCat"]
+  },
+  {
+    "id": "ChromeAlley",
+    "type": "location",
+    "description": "Um beco encharcado de chuva iluminado por letreiros de néon piscando. Drones de patrulha RoombaCore varrem a cada 10 minutos. Grafite de apontador laser cobre cada parede. Alta chance de encontro.",
+    "encounters": ["RoombaDrone", "LaserGang"],
+    "lootTable": ["CreditChips", "HackingClaws"]
+  },
+  {
+    "id": "RoombaCoreTower",
+    "type": "location",
+    "description": "A reluzente sede corporativa da RoombaCore. 40 andares de aço escovado e tecnologia de vácuo. Fortemente guardada. Área de masmorra final.",
+    "encounters": ["EliteRoombaDrone", "VacuumDemon", "CEORoomba"],
+    "lootTable": ["MasterHackingKey", "DragonScalePowerArmor"]
+  },
+  {
+    "id": "NightMarket",
+    "type": "location",
+    "description": "Um mercado subterrâneo extenso onde gatos trocam tecnologia roubada, atum de mercado negro e chips de identificação falsificados. Moralmente cinzento mas geralmente seguro. Bom lugar para gastar CreditChips.",
+    "encounters": ["PickpocketKitten"],
+    "npcs": ["FenceCatMerchant", "InfoBrokerTabby"]
+  },
+  {
+    "id": "SewersOfForgetfulness",
+    "type": "location",
+    "description": "A antiga rede de esgotos sob Neo-Pawsburg. Cheira terrivelmente. Lar de gatos ferais que rejeitaram a sociedade e ratos mutantes gigantes. Perigo médio.",
+    "encounters": ["MutantRat", "FeralCatBoss"],
+    "lootTable": ["OldCoinStash", "MysteryCanOfTuna"]
+  }
+]

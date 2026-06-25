@@ -1,0 +1,45 @@
+# ─── Python ─────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+*.egg
+
+# ─── Environment files ──────────────────────────────────
+.env
+.env.local
+.env.*.local
+
+# ─── Database ───────────────────────────────────────────
+data/
+*.db
+*.sqlite
+*.sqlite3
+
+# ─── Virtual environment ────────────────────────────────
+venv/
+.venv/
+env/
+
+# ─── IDE / Editor ───────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-*
+
+# ─── OS ─────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ─── Frontend ───────────────────────────────────────────
+node_modules/
+ui/dist/
+
+# ─── Coverage / Testing ────────────────────────────────
+.coverage
+htmlcov/
+.pytest_cache/
+.mypy_cache/

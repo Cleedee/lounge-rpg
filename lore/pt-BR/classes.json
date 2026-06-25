@@ -1,0 +1,54 @@
+[
+  {
+    "id": "TabbyWarrior",
+    "type": "class",
+    "description": "O Guerreiro Rajado é o valentão do submundo de Neo-Pawsburg. Nascido nas ruas, endurecido por brigas de beco e escapadas por um fio, o Guerreiro Rajado depende de força física bruta — FOR — e um instinto de sobrevivência que desafia a própria biologia.",
+    "backstory": "Diz a lenda que o primeiro Guerreiro Rajado sobreviveu a um golpe direto de uma unidade industrial RoombaCore MkI. Ele saiu mancando leve e com uma fúria incomparável. Desde então, a linhagem rajada carrega um dom: a Passiva Nove Vidas. Você não pode matar o que se recusa a morrer.",
+    "playstyle": "Lutador de linha de frente. Absorva dano, cause ataques físicos pesados. Use FOR para combate corpo a corpo. A Passiva Nove Vidas torna o Guerreiro Rajado perfeito para jogo agressivo de alto risco — entre no combate sabendo que tem uma segunda chance garantida por campanha. Melhor em brigas no Beco Chrome e confrontos diretos com drones RoombaCore.",
+    "stats": { "hp": 120, "maxHp": 120, "pawStrength": 8, "agility": 5, "arcane": 2, "stealth": 4, "gold": 10 },
+    "special": "NineLifesPassive",
+    "specialDescription": "Uma vez por campanha, quando o Guerreiro Rajado seria reduzido a 0hp, ele sobrevive com exatamente 1hp restante. Isso ativa automaticamente — nenhuma ação necessária. A flag nineLivesUsed é marcada como true depois. Não pode ativar uma segunda vez. O Mestre de Jogo deve narrar isso como um momento dramático de quase-morte.",
+    "weakness": "Arcano baixo significa que inimigos do tipo Mago Siamês (ataques laser, psíquicos) causam dano total. Furtividade 4 torna difícil esgueirar-se — espere lutar, não se esconder.",
+    "names": ["Garras McGee", "Sargento Fofucho", "Rex Patada", "Bruto Listrado"],
+    "dmNarrationNotes": "Narre ações do Guerreiro Rajado como poderosas e diretas. Eles não planejam — eles agem. Descreva seus golpes como 'uma pata como um drone de carga' e seus movimentos como 'deliberados, propositais, ligeiramente aterrorizantes.' Quando Nove Vidas ativar, pause a narração: 'Algo ancestral se agita na sua linhagem. Você deveria estar morto. Você não está.'"
+  },
+  {
+    "id": "SiameseMage",
+    "type": "class",
+    "description": "O Mago Siamês canaliza as frequências arcanas que permeiam a poluição eletromagnética banhada a néon de Neo-Pawsburg. São frágeis de corpo mas devastadores em poder, capazes de focar a energia latente da cidade em ataques arcanos concentrados.",
+    "backstory": "A linhagem siamesa carrega uma sensibilidade incomum a campos eletromagnéticos — uma característica que se manifestou como habilidade arcana depois que a cidade se encheu de bloqueadores de sinal RoombaCore. A megacorp criou a própria arma que a enfrenta. O Mago Siamês vê poesia nisso. Eles também veem no espectro ultravioleta, o que é menos poético mas mais útil.",
+    "playstyle": "Canhão de vidro. HP baixo, dano arcano alto. A habilidade Feitiço de Foco Laser permite que o Mago Siamês sacrifique 10hp para causar dano arcano 3x no próximo ataque — um risco que recompensa jogo decisivo. Use AGI para táticas evasivas. Mantenha inimigos à distância. Terrível em combate corpo a corpo; devastador em emboscadas preparadas.",
+    "stats": { "hp": 70, "maxHp": 70, "pawStrength": 3, "agility": 6, "arcane": 9, "stealth": 5, "gold": 15 },
+    "special": "LaserFocusSpell",
+    "specialDescription": "O Mago Siamês declara Feitiço de Foco Laser antes de rolar um ataque. Ele perde imediatamente 10hp (isso não pode ser bloqueado ou prevenido). Naquele ataque, adicione ARC x3 ao dano em vez do bônus arcano normal. A declaração deve acontecer antes da rolagem do dado — ativação retroativa não é permitida. Sem recarga, mas o custo de hp limita o uso excessivo naturalmente.",
+    "weakness": "70hp é uma desvantagem em lutas prolongadas. Dano físico de inimigos do tipo Guerreiro Rajado (RoombaDrones usando vácuo, Ratos Mutantes mordendo) ignora defesas arcanas. FOR baixa significa que corpo a corpo é suicídio.",
+    "names": ["Sussurro de Seda", "Madame Pata Azul", "O Pontista Azul", "Oráculo Miau"],
+    "dmNarrationNotes": "Narre o Mago Siamês com precisão elegante. Eles falam pouco. Quando agem, é com comprometimento total. Feitiço de Foco Laser deve ser narrado como o mago ficando muito quieto, olhos estreitando em fendas, o ar ao redor vibrando — então um golpe único devastador. Sua fragilidade é parte do personagem: 'Você sente seu HP se esvaindo no feitiço. Valeu a pena, você pensa. Provavelmente.'"
+  },
+  {
+    "id": "MaineCoonPaladin",
+    "type": "class",
+    "description": "O Paladino Maine Coon é o cavaleiro sagrado da resistência Scratch — grande, magnífico e operando sob um código de honra pessoal que confunde inimigos e ocasionalmente aliados. O Escudo de Bola de Pelo Sagrada faz deles o melhor tanque de Neo-Pawsburg.",
+    "backstory": "A linhagem Maine Coon descende dos Gatos do Templo da era Pré-Coleira, guardiões dos antigos cofres de atum. Eles carregam esse dever sagrado adiante, agora aplicado a proteger agentes da resistência e bloquear ataques de drones corporativos. Seu pelo é lendário. Seu escudo é divino. Seu ouro inicial (20 CreditChips) reflete herança familiar, que eles acham ligeiramente constrangedora.",
+    "playstyle": "Tanque e suporte. HP alto, estatísticas balanceadas, o melhor bloqueio de dano de uso único do jogo. O Escudo de Bola de Pelo Sagrada bloqueia até 15 de dano uma vez por encontro de combate — use ao levar um golpe grande. Combina bem com aliados agressivos. Arcano moderado significa que podem lidar com inimigos mágicos. Não são os mais rápidos (AGI 3), então posicionamento importa.",
+    "stats": { "hp": 100, "maxHp": 100, "pawStrength": 6, "agility": 3, "arcane": 5, "stealth": 2, "gold": 20 },
+    "special": "HolyHairballShield",
+    "specialDescription": "Uma vez por encontro de combate, o Paladino Maine Coon pode ativar o Escudo de Bola de Pelo Sagrada para bloquear até 15 pontos de dano recebido. A flag shieldUsedThisEncounter é marcada como true e reseta para false quando o combate termina. O escudo ativa automaticamente no maior golpe de um encontro se o jogador não o declarou manualmente — ou o jogador pode declará-lo proativamente. Não pode bloquear mais de 15 mesmo se o ataque exceder isso.",
+    "weakness": "Furtividade 2 torna o Paladino Maine Coon péssimo em esgueirar-se. Inimigos o notam imediatamente. AGI 3 significa que eles são frequentemente atingidos. Compensam tendo HP de sobra e um escudo. O casaco de pelo grande também os torna ligeiramente lentos em áreas aquáticas.",
+    "names": ["Sir Fofinho III", "Irmão Patona", "A Juba Justa", "Paladino Queijo"],
+    "dmNarrationNotes": "Narre o Paladino Maine Coon com dignidade e leve pomposidade. Eles se anunciam antes de golpear. O Escudo de Bola de Pelo Sagrada se manifesta como uma parede brilhante de pelo luxuoso — 'Você ergue o escudo ancestral. É, honestamente, principalmente pelo. Mas segura.' Quando testes de furtividade falham: 'Você tenta se esconder. Você é um Maine Coon grande e magnífico. Você não conseguiu. O drone vê você imediatamente.'"
+  },
+  {
+    "id": "SphinxRogue",
+    "type": "class",
+    "description": "O Ladino Esfinge é um sussurro nas ruas escuras de Neo-Pawsburg — sem pelo, inescrutável, operando nas lacunas entre zonas de vigilância corporativa. Com a maior AGI e FUR do jogo, são o infiltrador ideal. Desaparecimento em Tempestade de Areia os torna intocáveis quando escolhem.",
+    "backstory": "A linhagem Esfinge chegou a Neo-Pawsburg dos Desertos Orientais, onde desenvolveram técnicas avançadas de manipulação de areia para sobreviver às unidades de expansão desértica da RoombaCore. Na cidade, areia vira sombra. O Ladino Esfinge se adaptou. Ninguém tem certeza do que eles pensam sobre qualquer coisa, o que é parte da técnica.",
+    "playstyle": "Furtividade e golpe-e-corra. AGI 9 e FUR 9 são as maiores de qualquer classe — use-as constantemente. Desaparecimento em Tempestade de Areia desaparece o Ladino Esfinge por um turno com recarga de 3 turnos, fazendo todos os ataques errarem. Excelente para evitar golpes grandes, armar emboscadas e escapar de situações ruins. Os 25 de ouro inicial (maior de qualquer classe) refletem anos de intermediação profissional de informações.",
+    "stats": { "hp": 80, "maxHp": 80, "pawStrength": 4, "agility": 9, "arcane": 4, "stealth": 9, "gold": 25 },
+    "special": "SandstormVanish",
+    "specialDescription": "O Ladino Esfinge declara Desaparecimento em Tempestade de Areia como sua ação do turno. Ele desaparece completamente — todos os ataques inimigos erram automaticamente naquele turno. O vanishCooldownTurnsLeft é definido como 3 após o uso. O jogo decrementa isso em 1 a cada turno. O Desaparecimento não pode ser usado enquanto vanishCooldownTurnsLeft > 0. O Mestre de Jogo deve rastrear isso e informar o jogador quando estiver disponível novamente. Não afeta a capacidade do jogador de agir em turnos subsequentes.",
+    "weakness": "FOR mais baixa (4) significa que combate corpo a corpo direto é desaconselhável. ARCANO baixo (4) significa que inimigos mágicos resistem a abordagens físicas. O Ladino Esfinge é poderoso através de esquiva — em confrontos diretos eles têm menos opções que outras classes.",
+    "names": ["Pata de Areia", "O Sem Nome", "Fantasma do Beco", "Nulo"],
+    "dmNarrationNotes": "Narre o Ladino Esfinge com economia. Poucas palavras. Eles são menos observados do que observam. Desaparecimento em Tempestade de Areia: 'Você expira. As sombras do beco aceitam você. Por um momento, você não está aqui.' Quando inimigos erram durante o Desaparecimento: 'Os sensores do drone varrem a área. Não há nada para encontrar.' Seus nomes no mundo devem ser sussurrados, não anunciados."
+  }
+]

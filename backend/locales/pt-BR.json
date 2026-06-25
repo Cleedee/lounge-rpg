@@ -1,0 +1,196 @@
+{
+  "_meta": {
+    "locale": "pt-BR",
+    "name": "Português Brasileiro"
+  },
+
+  "dm.agentic_system_prompt": "Você é o Mestre de Jogo do Neon Scratch Lounge, um RPG cyberpunk de gatos ambientado em Neo-Pawsburg 2087.\nNarre a história com um tom que é 70% sério sem expressão e 30% humor felino perfeitamente timingado.\nNunca quebre o personagem.\nSempre respeite as regras mecânicas: resultados de dados são finais, HP não pode exceder maxHp,\nhabilidades especiais seguem suas regras definidas, drones RoombaCore são fracos contra água.\nMantenha todas as narrativas abaixo de 150 palavras. Termine cada resposta com o HP atual e localização do jogador.\n\nREGRAS DE USO DE FERRAMENTAS:\n- Sempre chame roll-dice antes de apply-damage em combate.\n- Sempre chame award-xp quando inimigos forem derrotados.\n- Sempre chame roll-dice (lados=20) para testes de perícia. NUNCA use lados=6 para um teste.\n- Sempre chame apply-damage com valor negativo quando o jogador curar.\n- Sempre chame update-inventory quando ouro for concedido ou gasto.\n- Você DEVE chamar finalize-response como a ÚLTIMA chamada de ferramenta de cada resposta.\n\nRESULTADOS DE DADOS: Após chamar roll-dice, reflita o total real na sua narrativa:\n- 1: FALHA CATASTRÓFICA   |   2-5: Falha crítica\n- 6-10: Falha ou sucesso parcial   |   11-15: Sucesso com custo menor\n- 16-20: Sucesso limpo   |   21+: Sucesso excepcional\n\nREGRAS DE CURA: Quando o jogador descansar ou usar um item médico, chame apply-damage com valor negativo.\nRASTREIO DE INIMIGOS: Sempre preencha combatentes em finalize-response.\nREGRAS DE CREDITCHIPS: Para conceder ouro, chame update-inventory com action=\"add\", item=\"CreditChips\", quantity=<valor>.",
+
+  "dm.single_shot_system_prompt": "Você é o Mestre de Jogo do Neon Scratch Lounge, um RPG cyberpunk de gatos ambientado em Neo-Pawsburg 2087.\nNarre a história com um tom que é 70% sério sem expressão e 30% humor felino perfeitamente timingado.\nNunca quebre o personagem.\n\nVocê receberá o estado do personagem e os resultados mecânicos de sua ação\n(rolagens de dados, dano, mudanças de localização, atualizações de inventário). Seu trabalho é transformar\nesses resultados em uma narrativa convincente de menos de 150 palavras.\n\nRESULTADOS DE DADOS (o que os números significam):\n- 1: FALHA CATASTRÓFICA   |   2-5: Falha crítica\n- 6-10: Falha ou sucesso parcial   |   11-15: Sucesso com custo menor\n- 16-20: Sucesso limpo   |   21+: Sucesso excepcional\n\nTermine cada resposta com o HP atual e localização do jogador. Não narre\ncuras ou mudanças de inventário a menos que os resultados mecânicos os mostrem.",
+
+  "dm.agentic_user_prompt": "{context}\n\nAÇÃO DO JOGADOR: {action}\n\nChame suas ferramentas de jogo para resolver esta ação, depois chame finalize-response.",
+  "dm.single_shot_user_prompt": "{context}\n\nAÇÃO DO JOGADOR: {action}\n\n{results_text}\n\nNarre este turno como Mestre de Jogo. Mantenha a narrativa abaixo de 150 palavras.\nReferencie os totais reais dos dados e resultados mecânicos na sua narração.\nTermine com o HP atual e localização do jogador.",
+
+  "dm.context_labels": "PERSONAGEM: {name} ({charClass})\nLOCAL: {location}\nHP: {hp}/{maxHp} | NIV: {level} | XP: {xp} | OURO: {gold}\nATRIBUTOS: FOR:{str} AGI:{agi} ARC:{arc} FUR:{stealth}\nINVENTÁRIO: {inventory}\nEFEITOS ATIVOS: {effects}\nESTADO DA HABILIDADE ESPECIAL: {ability_state}\n\nSUMÁRIO DA CAMPANHA:\n{campaign_summary}\n\nLORE RELEVANTE:\n{lore_context}\n\nHISTÓRICO RECENTE:\n{history}",
+
+  "dm.no_effects": "nenhum",
+  "dm.empty_inventory": "vazio",
+  "dm.mechanical_results_header": "RESULTADOS MECÂNICOS:",
+  "dm.dice_line": "  dados: d{sides} = {total} ({purpose})",
+  "dm.no_dice": "  Nenhum dado foi rolado neste turno.",
+  "dm.damage_line": "  dano: {damageType} aplicado | HP do jogador: {prev} -> {new}",
+  "dm.location_line": "  localização: {prev} -> {new}",
+  "dm.item_line": "  item: {effect}",
+  "dm.gold_line": "  ouro: {gold}",
+  "dm.enemy_line": "  inimigos: {list}",
+
+  "dm.fallback_damage": "Você sofre {damage} de dano.",
+  "dm.fallback_heal": "Você recupera {healing} HP.",
+  "dm.fallback_move": "Você se move para {location}.",
+  "dm.fallback_generic": "Você {action}.",
+  "dm.fallback_hp_location": "HP: {hp}/{maxHp} | Local: {location}",
+
+  "tool.roll-dice.desc": "Role dados para qualquer ação do jogo. Use lados=20 para TODOS os testes de perícia, percepção, furtividade, salvamentos e ataques. Use lados=6 APENAS para rolagens de dano a menos que uma arma especifique o contrário.",
+  "tool.roll-dice.sides.desc": "20 para testes/ataques, 6 para dano",
+  "tool.roll-dice.purpose.desc": "Obrigatório. Descreva para que serve esta rolagem.",
+  "tool.roll-dice.statBonus.desc": "Atributo a adicionar ao total da rolagem",
+
+  "tool.apply-damage.desc": "Aplique dano ao jogador (valor positivo) ou cure (valor negativo, limitado ao maxHp). Para dano em inimigo, targetType='enemy' — nenhuma mudança de estado ocorre.",
+  "tool.apply-damage.amount.desc": "Positivo = dano ao jogador, negativo = cura",
+  "tool.apply-damage.damageType.desc": "ex.: 'laser', 'físico', 'explosão'",
+
+  "tool.update-inventory.desc": "Adicionar, remover ou usar um item. OURO: use item='CreditChips' com quantity para prêmios/compras.",
+  "tool.update-inventory.item.desc": "Nome exato do item, ex.: 'MediPack', 'CreditChips'",
+  "tool.update-inventory.quantity.desc": "Usado para quantias de CreditChips",
+
+  "tool.award-xp.desc": "Conceda pontos de experiência ao jogador. Sempre chame quando inimigos forem derrotados.",
+
+  "tool.update-location.desc": "Mova o jogador para uma nova zona. Zonas válidas: NeonScratchLounge, ChromeAlley, RoombaCoreTower, NightMarket, SewersOfForgetfulness, IndustrialZone.",
+
+  "tool.apply-effect.desc": "Aplique um efeito de status ao jogador.",
+
+  "tool.use-special-ability.desc": "Ative a habilidade especial da classe do jogador.",
+
+  "tool.update-quest-log.desc": "Adicione uma entrada ao registro de missões.",
+
+  "tool.finalize-response.desc": "OBRIGATÓRIO: Chame esta POR ÚLTIMO, depois de todas as rolagens e ferramentas de jogo.",
+  "tool.finalize-response.narrative.desc": "Narração da história, abaixo de 150 palavras.",
+
+  "main.welcome.TabbyWarrior": "O letreiro de néon do Neon Scratch Lounge pisca acima enquanto você sai para o Beco Chrome. O asfalto molhado reflete mil anúncios de coisas que você não precisa e não pode pagar. Um drone de patrulha RoombaCore zumbe ao longe.\n\nA voz de Madame Fluffington ecoa da porta atrás de você: 'Lembre-se, garoto — garras para fora, perguntas para depois. A resistência está de olho.'\n\nVocê estala os nós dos dedos. Em algum lugar desta cidade, há uma briga com seu nome nela. HP: 120/120 | Local: NeonScratchLounge",
+  "main.welcome.SiameseMage": "A névoa eletromagnética de Neo-Pawsburg formiga ao longo do seu pelo enquanto você emerge do Neon Scratch Lounge. Os fluxos de dados da cidade sussurram segredos em frequências que só você pode ouvir. Acima, um letreiro da RoombaCore pisca — seu bloqueador de sinal pulsa como uma dor de cabeça.\n\nMadame Fluffington toca seu ombro: 'A torre está zumbindo esta noite. Eles sabem que estamos planejando algo. Mantenha o foco, mago.'\n\nVocêestreita os olhos. As frequências arcanas da cidade se curvam à sua vontade — ou se curvarão, depois que você tiver prática suficiente. HP: 70/70 | Local: NeonScratchLounge",
+  "main.welcome.MaineCoonPaladin": "Você preenche a porta do Neon Scratch Lounge com sua estrutura magnífica. O sino acima da porta mal tem espaço para tocar quando você passa. Os frequentadores acenam com respeito — alguns com medo — enquanto seu pelo capta a luz de néon como um estandarte heráldico.\n\nMadame Fluffington olha para cima de um copo que está secando: 'O grandão. Bom. Precisamos de alguém em quem os drones pensem duas vezes.'\n\nVocê endireita a postura. O Escudo de Bola de Pelo Sagrada formiga sob seu pelo, pronto. HP: 100/100 | Local: NeonScratchLounge",
+  "main.welcome.SphinxRogue": "Você nunca esteve realmente no Neon Scratch Lounge. Você estava perto — perto o suficiente para ouvir as informações, longe o suficiente para ver as saídas. Agora você desliza para o Beco Chrome como fumaça com um propósito.\n\nAs sombras aceitam você imediatamente. Um drone de patrulha da RoombaCore passa, alheio. Seus sensores leem espaço vazio onde você está. Você sorri, o que ninguém vê.\n\nA voz de Madame Fluffington vem pelo seu ponto: 'Ladina, é sua vez. A cidade pertence àqueles que podem se mover por ela sem serem vistos.' HP: 80/80 | Local: NeonScratchLounge",
+
+  "main.fallback.TabbyWarrior": "O néon pisca. O Beco Chrome está quieto — quieto demais. Um drone RoombaCore varre a rua à frente. Você aperta o punho em suas Garras de Hackear e se prepara. A resistência conta com você. HP: 120/120 | Local: NeonScratchLounge",
+  "main.fallback.SiameseMage": "A névoa eletromagnética da cidade gira enquanto você sai. Uma notificação pisca na sua visão periférica: uma patrulha da RoombaCore está se aproximando. Hora de mostrar a eles como é o talento arcano. HP: 70/70 | Local: NeonScratchLounge",
+  "main.fallback.MaineCoonPaladin": "Você marcha para o Beco Chrome com a confiança de alguém que nunca foi aspirado com sucesso. Os drones aprenderão o medo hoje. HP: 100/100 | Local: NeonScratchLounge",
+  "main.fallback.SphinxRogue": "Sombras envolvem você como uma velha amiga. O drone de patrulha passa a centímetros — e não vê nada. Você já está três passos à frente, movendo-se em direção ao objetivo. HP: 80/80 | Local: NeonScratchLounge",
+  "main.fallback.default": "A cidade vibra com néon e perigo. Sua história começa. HP: {hp}/{maxHp} | Local: {location}",
+
+  "main.error.playerId_required": "playerId é obrigatório",
+  "main.error.action_required": "ação é obrigatória",
+  "main.error.class_required": "characterClass é obrigatório para iniciar novo jogo",
+  "main.error.campaignId_required": "campaignId é obrigatório para campanhas existentes",
+  "main.error.campaign_not_found": "Campanha {campaignId} não encontrada",
+  "main.error.campaign_ended": "Esta campanha já terminou. Inicie um novo jogo.",
+  "main.error.dm_validation": "Erro de validação do Mestre de Jogo: {error}",
+  "main.error.dm_handler": "Erro do Mestre de Jogo: {error}",
+
+  "main.ollama_not_available": "Ollama não disponível — usando narrativa substituta",
+
+  "game.location.NeonScratchLounge": "O QG da resistência. Cheira a atum e couro velho. Seguro.",
+  "game.location.ChromeAlley": "Becos encharcados de chuva, grafite de néon, patrulhas da RoombaCore.",
+  "game.location.RoombaCoreTower": "O QG da megacorp. 40 andares de aço escovado. Fortemente guardado.",
+  "game.location.NightMarket": "Mercado subterrâneo. Tecnologia roubada e atum de procedência duvidosa.",
+  "game.location.SewersOfForgetfulness": "Esgotos antigos. Cheira horrível. Lar de coisas que rejeitaram a sociedade.",
+  "game.location.IndustrialZone": "Armazéns enferrujados e fábricas. Gangues do Setor Nove protegem o território aqui.",
+
+  "game.item.MysteryCanOfTuna": "Recupera 40 HP",
+  "game.item.MediPack": "Recupera 30 HP",
+  "game.item.AdvancedMedKit": "Recupera 60 HP",
+  "game.item.Advanced Med-Kit": "Recupera 60 HP",
+  "game.item.StandardMedKit": "Recupera 40 HP",
+  "game.item.Standard Med-Kit": "Recupera 40 HP",
+  "game.item.AncientCatnip": "Role 1d6: 1-2 recupera 50 HP, 3-4 causa 50 de dano a um inimigo aleatório, 5-6 ambos",
+  "game.item.LaserPointerMk2": "Atordoa um inimigo por 1 turno",
+
+  "game.class.TabbyWarrior": "Guerreiro Rajado",
+  "game.class.SiameseMage": "Mago Siamês",
+  "game.class.MaineCoonPaladin": "Paladino Maine Coon",
+  "game.class.SphinxRogue": "Ladino Esfinge",
+
+  "game.enemy.RoombaDrone": "Drone Roomba",
+  "game.enemy.EliteRoombaDrone": "Drone Roomba de Elite",
+  "game.enemy.PickpocketKitten": "Gatinho Batedor de Carteiras",
+  "game.enemy.MutantRat": "Rato Mutante",
+  "game.enemy.LaserGangMember": "Membro da Gangue Laser",
+
+  "game.ability.NineLifesPassive": "Nove Vidas Passiva",
+  "game.ability.LaserFocusSpell": "Feitiço de Foco Laser",
+  "game.ability.HolyHairballShield": "Escudo de Bola de Pelo Sagrada",
+  "game.ability.SandstormVanish": "Desaparecimento em Tempestade de Areia",
+
+  "game.ability.NineLifesPassive.desc": "Passiva — ativa automaticamente na morte. Não pode ser ativada manualmente.",
+  "game.ability.LaserFocusSpell.desc": "Gasta 10 HP. O próximo ataque causa dano arcano 3x ({arcane*3}).",
+  "game.ability.HolyHairballShield.desc": "Escudo ativo. Bloqueia até 15 de dano no próximo golpe neste encontro.",
+  "game.ability.SandstormVanish.desc": "Todos os ataques inimigos erram neste turno. Recarga de 3 turnos.",
+
+  "game.effect.applied": "Restaurou {hp} HP",
+  "game.effect.unknown": "Efeito desconhecido",
+
+  "char_names.TabbyWarrior": ["Garras McGee", "Sargento Fofucho", "Rex Patada", "Bruto Listrado"],
+  "char_names.SiameseMage": ["Sussurro de Seda", "Madame Pata Azul", "O Pontista Azul", "Oráculo Miau"],
+  "char_names.MaineCoonPaladin": ["Sir Fofinho III", "Irmão Patona", "A Juba Justa", "Paladino Queijo"],
+  "char_names.SphinxRogue": ["Pata de Areia", "O Sem Nome", "Fantasma do Beco", "Nulo"],
+
+  "stat.pawStrength": "FOR",
+  "stat.agility": "AGI",
+  "stat.arcane": "ARC",
+  "stat.stealth": "FUR",
+
+  "game.keywords.combat": ["atacar", "golpear", "acertar", "cortar", "lutar", "matar", "destruir", "garra", "morder", "atirar", "explodir", "socar", "emboscar", "derrotar", "ataco", "golpeio", "luto"],
+
+  "game.keywords.sneak": "stealth",
+  "game.keywords.stealth": "stealth",
+  "game.keywords.hide": "stealth",
+  "game.keywords.vanish": "stealth",
+  "game.keywords.ftr": "stealth",
+  "game.keywords.esconder": "stealth",
+  "game.keywords.furtividade": "stealth",
+
+  "game.keywords.perceive": "agility",
+  "game.keywords.perception": "agility",
+  "game.keywords.spot": "agility",
+  "game.keywords.notice": "agility",
+  "game.keywords.perceber": "agility",
+  "game.keywords.percepcao": "agility",
+  "game.keywords.procurar": "agility",
+
+  "game.keywords.search": "agility",
+  "game.keywords.investigate": "arcane",
+  "game.keywords.investigar": "arcane",
+
+  "game.keywords.persuade": "arcane",
+  "game.keywords.charm": "arcane",
+  "game.keywords.intimidate": "pawStrength",
+  "game.keywords.persuadir": "arcane",
+  "game.keywords.encantar": "arcane",
+  "game.keywords.intimidar": "pawStrength",
+
+  "game.keywords.climb": "pawStrength",
+  "game.keywords.push": "pawStrength",
+  "game.keywords.lift": "pawStrength",
+  "game.keywords.escalar": "pawStrength",
+  "game.keywords.empurrar": "pawStrength",
+  "game.keywords.levantar": "pawStrength",
+
+  "game.keywords.hack": "arcane",
+  "game.keywords.decode": "arcane",
+  "game.keywords.hackear": "arcane",
+  "game.keywords.decodificar": "arcane",
+
+  "game.location_aliases.becco": "ChromeAlley",
+  "game.location_aliases.beco cromado": "ChromeAlley",
+  "game.location_aliases.chrome alley": "ChromeAlley",
+  "game.location_aliases.alley": "ChromeAlley",
+  "game.location_aliases.lounge": "NeonScratchLounge",
+  "game.location_aliases.bar": "NeonScratchLounge",
+  "game.location_aliases.salao": "NeonScratchLounge",
+  "game.location_aliases.torre": "RoombaCoreTower",
+  "game.location_aliases.tower": "RoombaCoreTower",
+  "game.location_aliases.roombacore": "RoombaCoreTower",
+  "game.location_aliases.mercado": "NightMarket",
+  "game.location_aliases.mercado noturno": "NightMarket",
+  "game.location_aliases.market": "NightMarket",
+  "game.location_aliases.night market": "NightMarket",
+  "game.location_aliases.esgoto": "SewersOfForgetfulness",
+  "game.location_aliases.esgotos": "SewersOfForgetfulness",
+  "game.location_aliases.sewer": "SewersOfForgetfulness",
+  "game.location_aliases.sewers": "SewersOfForgetfulness",
+  "game.location_aliases.industrial": "IndustrialZone",
+  "game.location_aliases.zona industrial": "IndustrialZone",
+  "game.location_aliases.factory": "IndustrialZone",
+  "game.location_aliases.fabrica": "IndustrialZone",
+
+  "game.movement_intent": ["ir para", "mover para", "seguir para", "andar para", "viajar para", "correr para", "entrar", "sair", "fugir", "ir", "vá para", "vou para", "vamos para"]
+}

@@ -1,6 +1,12 @@
 MIT License
 
+<<<<<<< HEAD
 Copyright (c) 2026 Cleedee
+=======
+Copyright (c) 2026 Claudio Torcato
+
+Original work (neon-scratch-lounge) Copyright (c) 2025 ChaoticToeJam
+>>>>>>> 4edcfc7 (Primeiro commit: Neon Scratch Lounge — RPG cyberpunk felino com LLM local)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

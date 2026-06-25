@@ -1,0 +1,63 @@
+[
+  {
+    "id": "RoombaDrone",
+    "type": "enemy",
+    "description": "Uma unidade de patrulha RoombaCore padrão. Circular, implacável, faz um som que enche gatos de pavor primordial.",
+    "hp": 30,
+    "damage": "1d8",
+    "damageType": "vacuum",
+    "weakness": "água",
+    "drops": ["CreditChips", "DroneCore"],
+    "flavorText": "Ele zumbe ameaçadoramente. Você sente um terror ancestral."
+  },
+  {
+    "id": "LaserGangMember",
+    "type": "enemy",
+    "description": "Um gato de rua que se vendeu para a corporação. Empunha um apontador laser de grau militar. Move-se imprevisivelmente.",
+    "hp": 40,
+    "damage": "2d6",
+    "damageType": "laser",
+    "weakness": "escuridão",
+    "drops": ["LaserPointerMk2", "CreditChips"]
+  },
+  {
+    "id": "MutantRat",
+    "type": "enemy",
+    "description": "Um rato de esgoto do tamanho de um cachorro pequeno, mutado por resíduos químicos da RoombaCore. Surpreendentemente filosófico sobre sua condição.",
+    "hp": 50,
+    "damage": "1d10",
+    "damageType": "bite",
+    "weakness": "arcano",
+    "drops": ["MysteryCanOfTuna", "RatTooth"]
+  },
+  {
+    "id": "EliteRoombaDrone",
+    "type": "enemy",
+    "description": "Um modelo RoombaCore premium com função de autodestruição e um WiFi surpreendentemente bom.",
+    "hp": 80,
+    "damage": "2d8+5",
+    "damageType": "vacuum",
+    "weakness": "água",
+    "drops": ["EliteDroneCore", "CreditChips"]
+  },
+  {
+    "id": "VacuumDemon",
+    "type": "enemy",
+    "description": "Um mal antigo que precede a RoombaCore. O Vácuo original. Gatos o temem através de gerações. Chefe.",
+    "hp": 200,
+    "damage": "3d10",
+    "damageType": "existentialVacuum",
+    "weakness": "ronronar",
+    "drops": ["VacuumDemonCore", "AncientCatnip"]
+  },
+  {
+    "id": "CEORoomba",
+    "type": "enemy",
+    "description": "O chefe final. Uma Roomba usando um pequeno terno executivo. Surpreendentemente articulada. Tem um monólogo.",
+    "hp": 300,
+    "damage": "4d10",
+    "damageType": "corporate",
+    "weakness": "caos",
+    "drops": ["MasterHackingKey", "TinyBusinessSuit"]
+  }
+]

@@ -1,0 +1,86 @@
+[
+  {
+    "id": "HackingClaws",
+    "type": "item",
+    "description": "Garras de cromo retráteis que interfaceiam com sistemas RoombaCore.",
+    "effect": "+3 em ações de hackear, 1d6 de dano bônus contra drones"
+  },
+  {
+    "id": "LaserPointerMk2",
+    "type": "item",
+    "description": "Grau militar. Cria um ponto tão irresistível que inimigos devem persegui-lo por um turno.",
+    "effect": "Atordoa inimigo por 1 turno, 1 carga por combate"
+  },
+  {
+    "id": "AncientCatnip",
+    "type": "item",
+    "description": "Erva-de-gato pré-corporativa de qualidade lendária. Efeitos são imprevisíveis mas sempre dramáticos.",
+    "effect": "Role 1d6: 1-2 recupera 50hp, 3-4 causa 50 de dano a inimigo aleatório, 5-6 ambos"
+  },
+  {
+    "id": "MysteryCanOfTuna",
+    "type": "item",
+    "description": "Recupera 40hp. O mistério é por que é tão gostoso.",
+    "effect": "Recupera 40hp"
+  },
+  {
+    "id": "NeonScratchCoat",
+    "type": "item",
+    "description": "Uma jaqueta elegante com tiras de LED embutidas. Reduz dano de laser e parece incrível.",
+    "effect": "-3 a todo dano de laser recebido"
+  },
+  {
+    "id": "DroneCore",
+    "type": "item",
+    "description": "Recuperado de um drone RoombaCore derrotado. Pode ser vendido ou usado para artesanato.",
+    "effect": "Venda por 15 CreditChips ou combine 3 para Garras de Hackear"
+  },
+  {
+    "id": "MasterHackingKey",
+    "type": "item",
+    "description": "Um cartão-chave mestre que concede acesso a todos os sistemas RoombaCore. A resistência queria isto há anos.",
+    "effect": "Desbloqueia áreas seguras da Torre RoombaCore, +5 em todas as ações de hackear"
+  },
+  {
+    "id": "EliteDroneCore",
+    "type": "item",
+    "description": "O núcleo de processamento de um drone RoombaCore de Elite. Altamente valioso no mercado negro.",
+    "effect": "Venda por 50 CreditChips ou melhore Garras de Hackear"
+  },
+  {
+    "id": "VacuumDemonCore",
+    "type": "item",
+    "description": "A essência sombria do Demônio do Vácuo, cristalizada em uma esfera preta densa. Zune ameaçadoramente.",
+    "effect": "Item lendário: concede imunidade a dano do tipo vácuo"
+  },
+  {
+    "id": "RatTooth",
+    "type": "item",
+    "description": "Um grande molar de um rato mutante de esgoto. Amuleto de boa sorte, aparentemente.",
+    "effect": "+1 em testes de furtividade em esgotos"
+  },
+  {
+    "id": "DragonScalePowerArmor",
+    "type": "item",
+    "description": "Armadura forjada das escamas do lendário Gato Dragão de NeoTóquio. Raridade mítica.",
+    "effect": "-5 a todo dano recebido, +2 a todos os atributos"
+  },
+  {
+    "id": "TinyBusinessSuit",
+    "type": "item",
+    "description": "O terno executivo do CEO Roomba, tamanho para um robô em forma de disco. Elegante de uma forma sombria.",
+    "effect": "Item de troféu. Equipe para +10 de ouro por combate enquanto inimigos respeitam o terno."
+  },
+  {
+    "id": "OldCoinStash",
+    "type": "item",
+    "description": "Moeda pré-corporativa. A maioria dos comerciantes não aceita, mas alguns tipos nostálgicos aceitam.",
+    "effect": "Vale 30 CreditChips para o comerciante certo"
+  },
+  {
+    "id": "CreditChips",
+    "type": "currency",
+    "description": "A moeda digital padrão de Neo-Pawsburg. A RoombaCore as emite. A resistência as usa de qualquer jeito.",
+    "effect": "Moeda — adicionada ao total de ouro"
+  }
+]
