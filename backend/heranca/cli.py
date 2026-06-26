@@ -208,7 +208,8 @@ def criar_personagem() -> EstadoJogo:
         armadura_equipada=armadura_escolhida,
         inventario=[Item(nome="Comida", quantidade=5 + d10())],
     )
-    estado.refugio = Refugio(tipo=tipo, setor_id=setor, defesa=defs, defesa_max=defs,
+    estado.refugio = Refugio(tipo=tipo, setor_id=hex_chave(estado.setor_atual.q, estado.setor_atual.r),
+                              defesa=defs, defesa_max=defs,
                               espaco=esp, espaco_max=esp, tecnologia=tec, tecnologia_max=tec)
 
     console.print(f"\n[bold green]Sobrevivente {nome} criado![/]")
