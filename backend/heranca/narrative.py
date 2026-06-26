@@ -43,7 +43,7 @@ def _chamar_ollama(system_prompt: str, user_prompt: str, max_tokens: int = 300) 
             "system": system_prompt,
             "prompt": user_prompt,
             "options": {
-                "temperature": 0.7,
+                "temperature": 0.4,
                 "max_tokens": max_tokens,
             },
             "stream": False,
@@ -64,38 +64,33 @@ SYSTEM_NARRADOR = """Você é o Narrador de A HERANÇA DE CTHULHU, um RPG de ter
 
 REGRAS:
 - Narre em português brasileiro, em segunda pessoa ("você").
-- Tom: sombrio, opressivo, atmosférico. Use descrições sensoriais (cheiro, som, textura).
-- Seja conciso: no máximo 4 parágrafos curtos.
+- Tom: sombrio, atmosférico.
+- MUITO CURTO: no máximo 3 frases. Uma ou duas linhas.
 - NUNCA decida mecânicas (dano, cura, sucesso/falha de teste) — isso já foi resolvido pelo sistema.
 - Apenas descreva a cena com base nos resultados recebidos.
-- Incorpore o estado atual do personagem na narrativa (ferimentos, fome, loucura).
-- Use elementos lovecraftianos: horror cósmico, insignificância humana, poderes antigos incompreensíveis."""
+- Incorpore o estado atual do personagem na narrativa."""
 
 SYSTEM_NPC = """Você interpreta um NPC no mundo de A HERANÇA DE CTHULHU.
 
 REGRAS:
 - Responda EM PORTUGUÊS BRASILEIRO como o NPC, usando falas diretas entre aspas.
-- O NPC tem sua própria personalidade, medos e motivações.
-- Seja conciso: no máximo 3 falas.
-- NUNCA decida mecânicas. Apenas interprete.
-- Incorpore o cenário pós-apocalíptico na fala do personagem."""
+- MUITO CURTO: no máximo 2 falas curtas.
+- NUNCA decida mecânicas. Apenas interprete."""
 
 SYSTEM_ORACULO = """Você é um Oráculo para um RPG solo lovecraftiano.
 
 REGRAS:
-- Responda perguntas que podem ser respondidas com Sim/Não/Talvez com evidências.
-- Dê respostas curtas (1-2 frases) seguidas de uma sugestão narrativa breve.
-- Para perguntas abertas, dê 2-3 opções plausíveis.
-- Mantenha o tom de mistério e horror cósmico."""
+- Responda perguntas Sim/Não/Talvez com 1 frase de evidência.
+- MUITO CURTO: no máximo 2 frases.
+- Mantenha o tom de mistério."""
 
 SYSTEM_DIARIO = """Você é um Sobrevivente escrevendo seu diário em um mundo devastado pelos Grandes Antigos.
 
 REGRAS:
 - Escreva EM PORTUGUÊS BRASILEIRO em primeira pessoa.
-- Tom: cansado, esperançoso apesar de tudo, humano.
-- Seja conciso: 2-3 parágrafos.
-- Reflita os eventos do dia e o estado físico/mental do personagem.
-- Termine com uma reflexão ou pergunta sobre o futuro."""
+- Tom: cansado, humano.
+- MUITO CURTO: no máximo 1 parágrafo curto (3-4 frases).
+- Reflita os eventos do dia e o estado físico/mental do personagem."""
 
 
 def narrar_evento(evento_titulo: str, descricao: str, resultado_teste: dict = None,
@@ -110,7 +105,7 @@ def narrar_evento(evento_titulo: str, descricao: str, resultado_teste: dict = No
     if historico:
         contexto += f"\n{historico}\n"
 
-    resposta = _chamar_ollama(SYSTEM_NARRADOR, contexto)
+    resposta = _chamar_ollama(SYSTEM_NARRADOR, contexto, max_tokens=120)
     if resposta:
         return resposta
     return _fallback_evento(evento_titulo, descricao, resultado_teste, sucesso)
@@ -139,7 +134,7 @@ def interpretar_npc(npc_nome: str, npc_descricao: str,
     if historico:
         contexto += f"\n{historico}\n"
 
-    resposta = _chamar_ollama(SYSTEM_NPC, contexto, max_tokens=200)
+    resposta = _chamar_ollama(SYSTEM_NPC, contexto, max_tokens=100)
     if resposta:
         return resposta
     return f"[italic]{npc_nome} parece te avaliar, mas não diz nada de imediato.[/italic]"
@@ -152,7 +147,7 @@ def oraculo(pergunta: str, estado: dict = None, historico: str = None) -> str:
     if historico:
         contexto += f"\n{historico}\n"
 
-    resposta = _chamar_ollama(SYSTEM_ORACULO, contexto, max_tokens=150)
+    resposta = _chamar_ollama(SYSTEM_ORACULO, contexto, max_tokens=80)
     if resposta:
         return resposta
     return "O Oráculo permanece em silêncio. Você não encontra respostas claras."
@@ -169,7 +164,7 @@ def gerar_diario(eventos_do_dia: list[str], estado: dict = None, dia: int = 1, h
             f"Fome {estado.get('fome', 0)}, Loucura {estado.get('loucura', 0)}\n"
         )
 
-    resposta = _chamar_ollama(SYSTEM_DIARIO, contexto, max_tokens=400)
+    resposta = _chamar_ollama(SYSTEM_DIARIO, contexto, max_tokens=150)
     if resposta:
         return resposta
     return f"*O diário do Dia {dia} está em branco. Você não teve energia para escrever.*"
@@ -183,7 +178,7 @@ def narrar_combate(arma: str, dano: int, alvo: str, resultado_teste: dict) -> st
         f"Dano causado: {dano}\n"
         f"Alvo: {alvo}\n"
     )
-    resposta = _chamar_ollama(SYSTEM_NARRADOR, contexto, max_tokens=200)
+    resposta = _chamar_ollama(SYSTEM_NARRADOR, contexto, max_tokens=100)
     if resposta:
         return resposta
     if resultado_teste.get("sucesso"):
