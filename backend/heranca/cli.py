@@ -265,7 +265,7 @@ _acoes_desc = {
     "procurar_abrigo": "Você procura um local seguro para descansar e se proteger.",
     "procurar_refugio": "Você explora o setor em busca de um novo Refúgio permanente.",
     "item_aleatorio": "Você revira os escombros em busca de itens úteis.",
-    "interagir": "Você encontra outro sobrevivente e tenta conversar. Role um teste de Espírito (Manipulação) para ver se ele colabora.",
+    "interagir": "Você procura por outros sobreviventes no setor. Role Mente (Investigação). Sucesso: um novo sobrevivente se junta a você.",
     "voltar_refugio": "Você retorna ao seu Refúgio.",
 }
 
@@ -331,21 +331,17 @@ def executar_acao(estado: EstadoJogo, acao_id: str) -> str:
         return f"[green]✓[/] Você encontrou: {tipo} em {setor_nome}."
 
     elif acao_id == "interagir":
-        avancar_hora(estado, 0.5)
-        r = testar(estado, "Espírito", "Manipulação")
-        if USAR_LLM:
-            from backend.heranca.narrative import interpretar_npc
-            estado_dict = {"setor": _setor_id_atual(estado), "hora": int(estado.hora), "minutos": int((estado.hora - int(estado.hora)) * 60), "saude": estado.sobrevivente.saude}
-            hist = _historico_recente(estado)
-            fala = interpretar_npc("Um desconhecido", "Um sobrevivente cauteloso", "Neutro", "conversar", estado_dict, hist)
-            _registrar_acontecimento(estado, "Conversei com outro sobrevivente.")
-            if r["sucesso"]:
-                return f"{fala}\n\n[green]✓ A conversa foi produtiva. Você obteve informações.[/]"
-            return f"{fala}\n\n[yellow]✗ A conversa não rendeu muito.[/]"
+        tempo = 1 if setor_info and setor_info.perigo >= 3 else 0.5
+        avancar_hora(estado, tempo)
+        r = testar(estado, "Mente", "Investigação")
         if r["sucesso"]:
-            _registrar_acontecimento(estado, "Conversei com outro sobrevivente e obtive informações.")
-            return f"[green]✓[/] Interação em {setor_nome} — Você obteve informações úteis. (rolagem {r['total']})"
-        return f"[yellow]✗[/] Interação em {setor_nome} — A pessoa não coopera. (rolagem {r['total']})"
+            import random
+            nomes = ["Elias", "Carla", "Jorge", "Mara", "Tadeu", "Isabel", "Ruy", "Lia"]
+            nome = random.choice(nomes)
+            _registrar_acontecimento(estado, f"Encontrei {nome}, outro sobrevivente, que decidiu se juntar a mim.")
+            return f"[green]✓[/] Você encontrou [bold]{nome}[/], um sobrevivente que decide se juntar a você! (rolagem {r['total']})"
+        _registrar_acontecimento(estado, "Tentei encontrar outros sobreviventes, mas não encontrei ninguém.")
+        return f"[yellow]✗[/] Você não encontrou ninguém em {setor_nome}. (rolagem {r['total']})"
 
     elif acao_id == "oraculo":
         if not USAR_LLM:

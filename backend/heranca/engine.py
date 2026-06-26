@@ -561,7 +561,7 @@ def listar_acoes() -> list[dict]:
         {"id": "procurar_refugio", "nome": "Procurar Novo Refúgio", "tempo": 5, "atributo": "Mente", "pericia": "Investigação"},
         {"id": "item_especifico", "nome": "Conseguir Item Específico", "tempo": 1, "atributo": "Mente", "pericia": "Investigação"},
         {"id": "item_aleatorio", "nome": "Conseguir Item Aleatório", "tempo": 1, "atributo": "", "pericia": ""},
-        {"id": "interagir", "nome": "Encontrar outro Sobrevivente", "tempo": 0.5, "atributo": "Espírito", "pericia": "Manipulação"},
+        {"id": "interagir", "nome": "Encontrar outro Sobrevivente", "tempo": 0, "atributo": "Mente", "pericia": "Investigação"},
         {"id": "voltar_refugio", "nome": "Voltar ao Refúgio", "tempo": 1, "atributo": "", "pericia": ""},
         {"id": "descansar", "nome": "Descansar (Passar a Noite)", "tempo": 8, "atributo": "", "pericia": ""},
     ]
