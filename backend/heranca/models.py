@@ -92,6 +92,12 @@ class Refugio(BaseModel):
     upgrades: list[UpgradeRefugio] = []
 
 
+class NPC(BaseModel):
+    nome: str
+    postura: int
+    descricao: str = "Outro sobrevivente."
+
+
 class HordaInfo(BaseModel):
     tipo: str
     quantidade: int
@@ -154,6 +160,7 @@ class EstadoJogo(BaseModel):
     bitola_atual: int = 0
     locais_visitados: list[str] = []
     acontecimentos_registrados: list[str] = []
+    aliados: list[NPC] = []
     encontros_hoje: int = 0
     horda_atacou_hoje: bool = False
     descansou_hoje: bool = False

@@ -12,7 +12,7 @@ from rich.text import Text
 from rich import box
 
 from backend.heranca.models import (
-    EstadoJogo, Sobrevivente, Stats, Refugio, UpgradeRefugio,
+    EstadoJogo, Sobrevivente, NPC, Stats, Refugio, UpgradeRefugio,
     Arma, Armadura, Item, FaseDia, PERICIAS,
 )
 from backend.heranca.engine import (
@@ -339,23 +339,87 @@ def executar_acao(estado: EstadoJogo, acao_id: str) -> str:
             import random
             nomes = ["Elias", "Carla", "Jorge", "Mara", "Tadeu", "Isabel", "Ruy", "Lia"]
             nome = random.choice(nomes)
-            _registrar_acontecimento(estado, f"Encontrei {nome}, outro sobrevivente, que decidiu se juntar a mim.")
-            return f"[green]✓[/] Você encontrou [bold]{nome}[/], um sobrevivente que decide se juntar a você! (rolagem {r['total']})"
+            postura = random.randint(3, 7)
+            npc = NPC(nome=nome, postura=postura, descricao=f"Sobrevivente encontrado em {setor_nome}.")
+            estado.aliados.append(npc)
+            _registrar_acontecimento(estado, f"Encontrei {nome}, outro sobrevivente (Postura {postura}), que decidiu se juntar a mim.")
+            return f"[green]✓[/] Você encontrou [bold]{nome}[/] (Postura {postura}), que se junta a você! (rolagem {r['total']})"
         _registrar_acontecimento(estado, "Tentei encontrar outros sobreviventes, mas não encontrei ninguém.")
         return f"[yellow]✗[/] Você não encontrou ninguém em {setor_nome}. (rolagem {r['total']})"
 
     elif acao_id == "interagir_personagem":
         avancar_hora(estado, 0.5)
-        if USAR_LLM:
-            from backend.heranca.narrative import interpretar_npc
-            estado_dict = {"setor": _setor_id_atual(estado), "hora": int(estado.hora), "minutos": int((estado.hora - int(estado.hora)) * 60), "saude": estado.sobrevivente.saude}
-            hist = _historico_recente(estado)
-            fala = interpretar_npc("Um conhecido", "Um sobrevivente que você já encontrou antes", "Neutro", "conversar", estado_dict, hist)
-            _registrar_acontecimento(estado, "Conversei com uma personagem conhecida.")
-            return fala
-        r = testar(estado, "Espírito", "Manipulação")
-        _registrar_acontecimento(estado, f"Interagi com uma personagem: {'sucesso' if r['sucesso'] else 'não rendeu'}.")
-        return f"[green]✓[/] Conversa produtiva. (rolagem {r['total']})" if r["sucesso"] else f"[yellow]✗[/] A conversa não rendeu. (rolagem {r['total']})"
+        if not estado.aliados:
+            return "[yellow]Você não conhece ninguém para conversar. Use 'Encontrar outro Sobrevivente' primeiro.[/]"
+        from rich.table import Table as RichTable
+        t_alvos = RichTable(title="Personagens Conhecidos", box=box.ROUNDED)
+        t_alvos.add_column("#", style="cyan", width=3)
+        t_alvos.add_column("Nome", style="bold")
+        t_alvos.add_column("Postura", style="blue")
+        for i, a in enumerate(estado.aliados, 1):
+            t_alvos.add_row(str(i), a.nome, str(a.postura))
+        console.print(t_alvos)
+        try:
+            idx = IntPrompt.ask("[cyan]Qual personagem?[/]") - 1
+            alvo = estado.aliados[idx]
+        except (ValueError, IndexError):
+            return "[red]Escolha inválida.[/]"
+
+        INTENCOES = [
+            ("Pedir um favor",       4, 6, 8),
+            ("Pedir dinheiro",       4, 6, 8),
+            ("Intimidar ou ameaçar",  6, 8, 10),
+            ("Tentar seduzir",       4, 6, 8),
+            ("Pedir abrigo",         4, 6, 8),
+            ("Procurar trabalho",    4, 6, 8),
+            ("Procurar informação",  4, 6, 8),
+            ("Pedir ajuda em luta",  6, 8, 10),
+        ]
+        t_int = RichTable(title="O que você quer?", box=box.ROUNDED)
+        t_int.add_column("#", style="cyan", width=3)
+        t_int.add_column("Intenção", style="bold")
+        for i, (nome, *_0) in enumerate(INTENCOES, 1):
+            t_int.add_row(str(i), nome)
+        console.print(t_int)
+        try:
+            int_idx = IntPrompt.ask("[cyan]Qual a sua intenção?[/]") - 1
+            intencao, req_dom, req_neutro, req_domado = INTENCOES[int_idx]
+        except (ValueError, IndexError):
+            return "[red]Escolha inválida.[/]"
+
+        postura_jog = estado.sobrevivente.postura
+        postura_alvo = alvo.postura
+        if postura_jog > postura_alvo:
+            relacao = "Dominante"
+            necessidade = req_dom
+        elif postura_jog == postura_alvo:
+            relacao = "Neutro"
+            necessidade = req_neutro
+        else:
+            relacao = "Dominado"
+            necessidade = req_domado
+        console.print(f"  Sua Postura: {postura_jog} | Postura de {alvo.nome}: {postura_alvo} → [bold]{relacao}[/] (precisa rolar ≥ {necessidade})")
+
+        manipulacao_usada = False
+        if estado.sobrevivente.postura <= alvo.postura:
+            r_manip = testar(estado, "Espírito", "Manipulação")
+            if r_manip["sucesso"]:
+                alvo.postura -= 1
+                manipulacao_usada = True
+                console.print(f"[green]Manipulação diminuiu a Postura de {alvo.nome} para {alvo.postura}.[/]")
+                if postura_jog > alvo.postura:
+                    relacao = "Dominante"
+                    necessidade = req_dom
+                elif postura_jog == alvo.postura:
+                    relacao = "Neutro"
+                    necessidade = req_neutro
+
+        rolagem = d10()
+        sucesso = rolagem >= necessidade
+        _registrar_acontecimento(estado, f"Interagi com {alvo.nome} ({intencao}): {relacao}, rolei {rolagem}, {'sucesso' if sucesso else 'falha'}.")
+        if sucesso:
+            return f"[green]✓[/] {alvo.nome} aceita seu pedido de [bold]{intencao.lower()}[/]! ({relacao}, rolei {rolagem}, precisava ≥ {necessidade})"
+        return f"[yellow]✗[/] {alvo.nome} recusa seu pedido de [bold]{intencao.lower()}[/]. ({relacao}, rolei {rolagem}, precisava ≥ {necessidade})"
 
     elif acao_id == "oraculo":
         if not USAR_LLM:
