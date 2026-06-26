@@ -1,12 +1,10 @@
 <div align="center">
 
-# 🔷 NEON SCRATCH LOUNGE
+# 🔮 A HERANÇA DE CTHULHU
 
-**Um RPG cyberpunk felino rodando localmente com LLM open-source**
+**Um RPG Solo de Sobrevivência Lovecraftiana — Terminal + LLM**
 
 [![Python](https://img.shields.io/badge/Python-3.12+-3776AB?logo=python&logoColor=white)](https://python.org)
-[![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
-[![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)](https://reactjs.org)
 [![Ollama](https://img.shields.io/badge/Ollama-000?logo=ollama&logoColor=white)](https://ollama.ai)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
@@ -14,157 +12,128 @@
 
 ---
 
-Neo-Pawsburg, 2087. Gatos ciborgues lutam por território, chips e sobrevivência nas ruas encharcadas de néon. Este é um RPG de mesa single-player onde um LLM local (via Ollama) atua como mestre — narrando, descrevendo cenas e reagindo às suas ações.
+O fim chegou. Os Grandes Antigos despertaram. Arkham é agora um arquipélago de escombros, loucura e desespero. Você é um sobrevivente — caçando comida, improvisando abrigo, enfrentando criaturas que a sanidade não deveria testemunhar.
 
-## Projeto Original
+Este é um RPG solo baseado no sistema **SOLO10** e no livro *A Herança de Cthulhu* (101 Games), rodando diretamente no terminal. Opcionalmente, um LLM local via Ollama narra eventos, interpreta NPCs e escreve diários.
 
-Este é um **fork/adaptação local** do projeto original [neon-scratch-lounge](https://github.com/chaotictoejam/neon-scratch-lounge) por ChaoticToeJam.
-
-O original foi escrito em **TypeScript** com infraestrutura **AWS** (Lambda + DynamoDB + Step Functions + EventBridge + CloudWatch + API Gateway). Esta versão reimplementa todo o backend em **Python** com **FastAPI + SQLite**, removendo dependências de nuvem e substituindo o modelo proprietário por LLMs open-source via [Ollama](https://ollama.ai).
-
-Frontend React + Vite foi mantido do original (pasta `ui/`).
-
-## Arquitetura
+## Gameplay
 
 ```
-jogador → POST /action  →  FastAPI  →  lore_retriever (RAG local)
-                                      →  dungeon_master  →  game_engine (8 tools)
-                                                         →  Ollama (narrativa)
-                                      →  SQLite (persistência)
+   Hex Grid (axial)   Ações        Eventos        Combate
+   ┌─────────────┐   ┌────────┐   ┌────────┐   ┌──────────┐
+   │ NE  C.Nova  │   │ Caçar  │   │ Rolar  │   │ Atacar   │
+   │ L   C.Velha │ → │ Itens  │ → │ Evento │ → │ Fugir    │
+   │ SE  Porto   │   │ Interag│   │ Setor  │   │ Morrer   │
+   └─────────────┘   └────────┘   └────────┘   └──────────┘
 ```
 
-### Modos de Jogo (DM_MODE)
+### Características
 
-| Modo | Descrição | Ideal para |
-|---|---|---|
-| `single_shot` (default) | Engine Python parseia a ação por keywords, executa as tools, e chama o LLM **uma única vez** para narrar os resultados. Rápido e confiável em CPU. | Modelos pequenos (0.5b–1.5b), CPU |
-| `agentic` | LLM decide quais tools chamar em loop multi-turn (até 12 iterações), igual ao original da AWS. Requer modelo mais capaz. | GPU, modelos 7B+ |
-
-Alternância via env var: `DM_MODE=agentic` ou `DM_MODE=single_shot`.
-
-### Tools da Game Engine
-
-- `roll-dice` — Rolagem de dados (d4 a d20) com bônus de atributo
-- `apply-damage` — Dano/cura ao jogador
-- `update-inventory` — Gerenciar inventário e CreditChips
-- `award-xp` — Experiência e nível
-- `update-location` — Navegação entre zonas
-- `apply-effect` — Status effects
-- `use-special-ability` — Habilidade especial da classe
-- `update-quest-log` — Registro de missões
+- **Mapa hexagonal** com 5 setores únicos (Cidade Nova, Cidade Velha, Centro Industrial, Porto, Ermos)
+- **Cada setor tem características singulares** — dois hexágonos do mesmo tipo são diferentes entre si
+- **Direção cardinal** ao navegar (N, NE, L, SE, S, SO, O, NO)
+- **Ciclo dia/noite** — às 18h escurece e as hordas caçam
+- **Gerenciamento de recursos** — fome, loucura, saúde, postura, vontade
+- **Combate** — enfrente ou fuja de encontros violentos
+- **Refúgio personalizável** — upgrades como Muralha, Horta, Torre de Vigia
+- **Eventos aleatórios por setor** — cada setor tem sua própria tabela de eventos (d20)
+- **LLM opcional** — narrativa rica, NPCs interpretados, Oráculo, Diário automático
+- **Histórico persistente** — todas as ações ficam registradas com timestamp e local
 
 ## Pré-requisitos
 
 - **Python 3.12+**
-- **[Ollama](https://ollama.ai)** rodando em segundo plano
-- Um modelo de chat compatível (ex: `qwen2.5:0.5b`, `qwen2.5:1.5b`)
-- Node.js 18+ (para o frontend)
-- `nomic-embed-text` (para o RAG de lore)
+- **[Ollama](https://ollama.ai)** (opcional, para narrativa com IA)
+- Modelo compatível (ex: `qwen2.5:1.5b`)
 
 ## Setup Rápido
 
 ```bash
 # 1. Clone
-git clone https://github.com/seu-usuario/lounge-rpg.git
-cd lounge-rpg
+git clone https://github.com/seu-usuario/heranca-de-cthulhu.git
+cd rpg-criancas
 
-# 2. Backend
-cd backend
-pip install fastapi uvicorn httpx pydantic
+# 2. Instalar dependências
+pip install rich httpx pydantic
 
-# 3. Frontend
-cd ../ui
-npm install
-cp .env.local.example .env.local  # ajuste se necessário
-
-# 4. Modelos Ollama
-ollama pull qwen2.5:0.5b
-ollama pull nomic-embed-text
+# 3. Modelo Ollama (opcional)
+ollama pull qwen2.5:1.5b
 ```
 
-## Rodar
+## Como Jogar
 
 ```bash
-# Terminal 1: Backend
-cd backend
-uvicorn main:app --port 8001 --reload
+# Modo padrão (sem IA)
+python3 -m backend.heranca.cli
 
-# Terminal 2: Frontend
-cd ui
-npm run dev
+# Com narrativa via LLM
+python3 -m backend.heranca.cli --llm
+
+# Com modelo específico
+python3 -m backend.heranca.cli --llm --model qwen2.5:1.5b
 ```
 
-Acessar frontend em `http://localhost:5173`.
+### Comandos durante o jogo
 
-## Configuração
+| Opção | Descrição |
+|-------|-----------|
+| `1` | Mover para outro setor |
+| `2` | Ver status detalhado |
+| `3-10` | Ações (Caçar, Itens, Interagir, etc.) |
+| `?` | Ajuda |
+| `Gerenciar Refúgio` | Instalar upgrades |
+| `Salvar` | Salvar jogo |
+| `Sair` | Encerrar partida |
 
-Todas as opções são configuráveis via variáveis de ambiente:
+Com `--llm` ativo:
+| Opção | Descrição |
+|-------|-----------|
+| `Consultar o Oráculo` | Faça perguntas ao Oráculo |
+| `Escrever no Diário` | Gera entrada narrativa do dia |
 
-| Variável | Default | Descrição |
-|---|---|---|
-| `OLLAMA_BASE_URL` | `http://localhost:11434` | URL do Ollama |
-| `OLLAMA_MODEL` | `qwen2.5:1.5b` | Modelo de chat |
-| `DM_MODE` | `single_shot` | `single_shot` ou `agentic` |
-| `LOCALE` | `pt-BR` | Idioma (`pt-BR` ou `en-US`) |
-| `DATABASE_PATH` | `./data/neon_scratch.db` | Caminho do SQLite |
+## Sistema de Combate
 
-## Endpoints da API
+Ao encontrar inimigos, você pode:
 
-| Método | Rota | Descrição |
-|---|---|---|
-| `GET` | `/health` | Health check |
-| `POST` | `/action` | Enviar ação do jogador |
-| `GET` | `/action/status?turnId=` | Status de uma ação |
-| `POST` | `/demo/inject-failure` | Injetar falha forçada (demo) |
-| `POST` | `/demo/clear-failure` | Limpar falha forçada |
-| `GET` | `/demo/logs?campaignId=` | Logs de turnos |
+1. **Atacar (Corpo a Corpo)** — rola Corpo + Combate Corporal
+2. **Atacar (à Distância)** — rola Corpo + Combate a Distância (requer arma ranged)
+3. **Fugir** — rola Corpo + Atletismo para escapar
 
-## Classes de Personagem
+Cada turno o inimigo revida. Combate continua até vitória, fuga ou morte.
 
-| Classe | HP | Atributo Principal | Habilidade Especial |
-|---|---|---|---|
-| TabbyWarrior | 120 | Força (8) | Nine Lives — revive com 1HP uma vez |
-| SiameseMage | 70 | Arcano (9) | Laser Focus — 3x dano arcano (custa 10HP) |
-| MaineCoonPaladin | 100 | Força (6) | Holy Hairball Shield — bloqueia 15 de dano |
-| SphinxRogue | 80 | Agilidade/Stealth (9) | Sandstorm Vanish — invisibilidade 3 turnos |
+## Mapa
 
-## Zonas
+```
+            (-1,0) Centro Industrial
+                \
+    (0,-1) Ermos--(0,0) Cidade Nova--(1,0) Cidade Velha
+                      \
+                  (0,1) Porto
+```
 
-NeonScratchLounge, ChromeAlley, RoombaCoreTower, NightMarket, SewersOfForgetfulness, IndustrialZone.
+Coordenadas axiais com direções cardeais. O Refúgio inicial fica em Cidade Nova (0,0).
 
 ## Estrutura do Projeto
 
 ```
-lounge-rpg/
-├── backend/
-│   ├── main.py              # FastAPI, rotas, fallback narrativo
-│   ├── config.py            # Config centralizada (Ollama, modo, timeouts)
-│   ├── models.py            # Pydantic models + constantes do jogo
-│   ├── database.py          # SQLite (campanhas + turn_results)
-│   ├── campaign_manager.py  # CRUD de campanhas
-│   ├── dungeon_master.py    # Dispatcher: agentic ou single-shot
-│   ├── game_engine.py       # 8 tools de jogo
-│   ├── lore_retriever.py    # RAG por keyword scoring
-│   ├── response_builder.py  # Montagem de resposta
-│   ├── i18n.py              # Internacionalização
-│   └── locales/
-│       └── pt-BR.json       # Traduções pt-BR
-├── ui/                      # Frontend React+Vite (original adaptado)
-│   ├── src/
-│   │   ├── components/      # Componentes React
-│   │   ├── i18n/            # Traduções do frontend
-│   │   └── ...
-│   └── .env.local.example   # Template de configuração
-├── lore/                    # JSONs de lore (classes, inimigos, itens, locais)
-│   └── pt-BR/               # Versão traduzida
-├── data/                    # Banco SQLite (criado em runtime, ignorado pelo git)
+rpg-criancas/
+├── backend/heranca/
+│   ├── cli.py              # Interface de terminal (Rich)
+│   ├── engine.py           # Motor do jogo (hex grid, combate, eventos)
+│   ├── models.py           # Modelos Pydantic
+│   ├── narrative.py        # LLM (Ollama) — narrativa, NPC, oráculo, diário
+│   ├── data_loader.py      # Carregamento de dados JSON
+│   └── data/               # Dados do jogo (setores, eventos, itens, etc.)
+│       ├── sectors.json
+│       ├── events/
+│       ├── items.json
+│       └── adversaries.json
+├── docs/heranca-de-cthulhu/
+│   ├── ROADMAP.md
+│   └── SOLO10_LICENCA_ABERTA.md
 └── README.md
 ```
 
-## Fallback
-
-Se o Ollama estiver offline ou o modelo for muito lento, o sistema usa narrativas fallback pré-escritas — as mecânicas (dados, dano, inventário, locomoção) continuam funcionando normalmente.
-
 ## Licença
 
-MIT. Este projeto é um fork adaptado do [neon-scratch-lounge](https://github.com/chaotictoejam/neon-scratch-lounge) original, mantendo a mesma licença.
+MIT. Baseado no sistema **SOLO10** (CC BY) e no livro *A Herança de Cthulhu* (101 Games).
