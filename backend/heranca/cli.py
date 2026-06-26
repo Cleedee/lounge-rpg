@@ -558,7 +558,6 @@ def loop_jogo(estado: EstadoJogo):
                         console.print(f"\n[bold]Ação: {acao['nome']}[/]")
                         msg = executar_acao(estado, acao["id"])
                         console.print(msg)
-                        from backend.heranca.engine import rolar_evento, resolver_evento, verificar_encontro_violento, gerar_encontro_violento
                         evento = rolar_evento(estado)
                         if evento:
                             resultado = resolver_evento(estado, evento)
