@@ -43,3 +43,5 @@ ui/dist/
 htmlcov/
 .pytest_cache/
 .mypy_cache/
+*.pdf
+docs/heranca-de-cthulhu/pages/
