@@ -7,7 +7,14 @@
       "description": "Arranha-céus em ruínas, letreiros de néon ainda piscando, data centers saqueados. O poder corporativo que um dia governou Arkham agora é apenas mais uma camada de escombros.",
       "connections": ["cidade_velha", "centro_industrial"],
       "danger_level": 2,
-      "event_table": "events/cidade_nova.json"
+      "event_table": "events/cidade_nova.json",
+      "features": [
+        "Praça central com uma estátua decapitada",
+        "Antigo shopping tomado por vegetação",
+        "Hotel abandonado com janelas tapadas",
+        "Praça de alimentação com restos de comida enlatada",
+        "Subsolo de estacionamento com veículos incendiados"
+      ]
     },
     {
       "id": "cidade_velha",
@@ -15,7 +22,14 @@
       "description": "Ruas de paralelepípedo, igrejas seculares, prédios universitários. Os cultistas tomaram conta dos porões e túneis subterrâneos que conectam os edifícios históricos.",
       "connections": ["cidade_nova", "porto", "ermos"],
       "danger_level": 3,
-      "event_table": "events/cidade_velha.json"
+      "event_table": "events/cidade_velha.json",
+      "features": [
+        "Igreja com sinos que tocam sozinhos à meia-noite",
+        "Biblioteca universitária com livros proibidos",
+        "Praça da Sé com barricadas de madeira",
+        "Cemitério com sepulturas violadas",
+        "Mercado público abandonado com barracas de lona"
+      ]
     },
     {
       "id": "centro_industrial",
@@ -23,7 +37,14 @@
       "description": "Fábricas abandonadas, galpões enormes, ferros-velho. Antigos poços de toxinas químicas criaram criaturas que não deveriam existir. O som de metal rangendo ecoa 24 horas.",
       "connections": ["cidade_nova", "porto"],
       "danger_level": 4,
-      "event_table": "events/centro_industrial.json"
+      "event_table": "events/centro_industrial.json",
+      "features": [
+        "Fábrica de produtos químicos com vazamento verde-fluorescente",
+        "Ferro-velho com sucata empilhada como muralhas",
+        "Galpão de trens abandonados com vagões lacrados",
+        "Usina elétrica com cabos soltando faíscas",
+        "Silo de grãos apodrecidos com cheiro nauseante"
+      ]
     },
     {
       "id": "porto",
@@ -31,7 +52,14 @@
       "description": "Docas apodrecidas, navios encalhados, contêineres enferrujados. Algo gigante se move nas águas escuras. Os pescadores que restaram não pescam mais peixes.",
       "connections": ["cidade_velha", "centro_industrial", "ermos"],
       "danger_level": 3,
-      "event_table": "events/porto.json"
+      "event_table": "events/porto.json",
+      "features": [
+        "Navio cargueiro encalhado com carga misteriosa",
+        "Armazém portuário com contêineres lacrados",
+        "Píer de pesca com barcos virados",
+        "Terminal de contêineres com guindastes tombados",
+        "Farol com luz piscando em código desconhecido"
+      ]
     },
     {
       "id": "ermos",
@@ -39,7 +67,14 @@
       "description": "Campos áridos, fazendas abandonadas, estradas rurais que não levam a lugar nenhum. A geometria dos campos parece errada — como se alguém tivesse redesenhado o horizonte.",
       "connections": ["cidade_velha", "porto"],
       "danger_level": 2,
-      "event_table": "events/ermos.json"
+      "event_table": "events/ermos.json",
+      "features": [
+        "Celeiro em pé com símbolos estranhos pintados",
+        "Poço artesiano com água escura e oleosa",
+        "Cruzamento de estradas com postes retorcidos",
+        "Fazenda com tratores abandonados em círculo",
+        "Igreja rural com vitrais estilhaçados"
+      ]
     }
   ]
 }
