@@ -38,6 +38,10 @@ Thumbs.db
 node_modules/
 ui/dist/
 
+
+# ─── Frontend ───────────────────────────────────────────
+docs/heranca-de-cthulhu/
+
 # ─── Coverage / Testing ────────────────────────────────
 .coverage
 htmlcov/
