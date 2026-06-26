@@ -579,6 +579,11 @@ def menu_combate(estado: EstadoJogo, encontro: dict) -> str:
 
     while hp_total - dano_acumulado > 0:
         s = estado.sobrevivente
+        if s.saude <= 0:
+            estado.encerrado = True
+            estado.causa_morte = f"Morto por {adv['name']}"
+            console.print("[bold red]VOCÊ MORREU![/]")
+            return "morte"
         hp_rest = hp_total - dano_acumulado
         console.print(f"\n[red]Sua Saúde: {s.saude}/{s.stats.saude_max}[/] | "
                       f"[blue]Postura: {s.postura}/{s.stats.postura_max}[/]")
@@ -614,6 +619,11 @@ def menu_combate(estado: EstadoJogo, encontro: dict) -> str:
             r_reacao = reagir_adversario(adv, 0)
             sofrer_dano(estado, r_reacao["dano"])
             console.print(f"[red]✗[/] {r_reacao['descricao']}")
+            if s.saude <= 0:
+                estado.encerrado = True
+                estado.causa_morte = f"Morto por {adv['name']}"
+                console.print("[bold red]VOCÊ MORREU![/]")
+                return "morte"
             continue
 
         if hp_total - dano_acumulado <= 0:
