@@ -265,7 +265,7 @@ _acoes_desc = {
     "procurar_abrigo": "Você procura um local seguro para descansar e se proteger.",
     "procurar_refugio": "Você explora o setor em busca de um novo Refúgio permanente.",
     "item_aleatorio": "Você revira os escombros em busca de itens úteis.",
-    "interagir": "Você encontra outro sobrevivente e tenta conversar.",
+    "interagir": "Você encontra outro sobrevivente e tenta conversar. Role um teste de Espírito (Manipulação) para ver se ele colabora.",
     "voltar_refugio": "Você retorna ao seu Refúgio.",
 }
 
