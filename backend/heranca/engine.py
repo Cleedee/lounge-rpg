@@ -222,6 +222,7 @@ def _atualizar_fase(estado: EstadoJogo):
 def iniciar_estado() -> EstadoJogo:
     estado = EstadoJogo()
     estado.mapa = gerar_mapa_padrao()
+    estado.refugio.setor_id = hex_chave(estado.setor_atual.q, estado.setor_atual.r)
     _atualizar_fase(estado)
     return estado
 
@@ -390,7 +391,7 @@ def passar_noite(estado: EstadoJogo, no_refugio: bool = True) -> dict:
 
     horda = rolar_ataque_horda(estado)
     if horda:
-        resultado["horda"] = horda.model_dump()
+        resultado["horda"] = horda
         if no_refugio:
             resultado["msg"] = f"Um ataque de Horda ocorreu! {horda.descricao} Seu Refúgio sofreu o ataque."
         else:

@@ -22,7 +22,7 @@ from backend.heranca.engine import (
     rolar_ataque_horda, passar_noite, processar_fome_diaria,
     ataque_ao_refugio, construir_upgrade, listar_acoes,
     testar, sofrer_dano, consumir_comida, avancar_hora,
-    d10, d10_rolar, UPGRADES,
+    d10, d10_rolar, hex_chave, HexCoordenada, UPGRADES,
 )
 
 console = Console()
@@ -221,7 +221,6 @@ def _setor_id_atual(estado):
 
 
 def _registrar_acontecimento(estado: EstadoJogo, descricao: str):
-    from backend.heranca.engine import hex_chave
     chave = hex_chave(estado.setor_atual.q, estado.setor_atual.r)
     setor_nome, _, _ = _setor_atual_info(estado)
     h_int = int(estado.hora)
@@ -378,7 +377,18 @@ def executar_acao(estado: EstadoJogo, acao_id: str) -> str:
         return entrada
 
     elif acao_id == "voltar_refugio":
-        return f"[green]✓[/] Você retorna ao seu Refúgio em segurança."
+        if not estado.refugio.setor_id:
+            return "[yellow]Você não tem um Refúgio estabelecido.[/]"
+        q_str, r_str = estado.refugio.setor_id.split(",")
+        q_ref, r_ref = int(q_str), int(r_str)
+        if estado.setor_atual.q == q_ref and estado.setor_atual.r == r_ref:
+            return "[green]✓[/] Você já está no seu Refúgio."
+        dist = abs(estado.setor_atual.q - q_ref) + abs(estado.setor_atual.r - r_ref)
+        horas = max(1, dist * 2)
+        estado.setor_atual = HexCoordenada(q=q_ref, r=r_ref)
+        avancar_hora(estado, horas)
+        _registrar_acontecimento(estado, f"Voltei ao Refúgio ({q_ref},{r_ref}).")
+        return f"[green]✓[/] Você retorna ao seu Refúgio ({q_ref},{r_ref}). ({horas}h de viagem)"
 
     elif acao_id == "descansar":
         console.print("[yellow]Você se prepara para passar a noite...[/]")
@@ -400,8 +410,8 @@ def executar_acao(estado: EstadoJogo, acao_id: str) -> str:
         msg = resultado["msg"]
         if resultado.get("horda"):
             horda_info = resultado["horda"]
-            msg += f"\n[red]☠ HORDA: {horda_info['descricao']}[/]"
-            r_ataque = ataque_ao_refugio(estado, resultado["horda"])
+            msg += f"\n[red]☠ HORDA: {horda_info.descricao}[/]"
+            r_ataque = ataque_ao_refugio(estado, horda_info)
             msg += f"\n{r_ataque['resultado']}"
         msg += "\n[green]☀ Você acordou! Novo dia começa.[/]"
         return msg
@@ -498,13 +508,20 @@ def loop_jogo(estado: EstadoJogo):
                 console.print("[red]Número inválido[/]")
         else:
             console.print("[bold red]Está escuro. As hordas dos Grandes Antigos caçam à noite![/]")
+            no_ref = estado.refugio.setor_id == hex_chave(estado.setor_atual.q, estado.setor_atual.r)
+            if not no_ref:
+                console.print("[yellow]Você está longe do seu Refúgio...[/]")
             if Prompt.ask("[yellow]Dormir e passar a noite?[/]", choices=["s", "n"], default="s") == "s":
-                resultado = passar_noite(estado, no_refugio=True)
+                resultado = passar_noite(estado, no_refugio=no_ref)
                 console.print(resultado["msg"])
                 if resultado.get("horda"):
-                    console.print(f"[red]HORDA: {resultado['horda']['descricao']}[/]")
-                    r_atq = ataque_ao_refugio(estado, resultado["horda"])
-                    console.print(r_atq["resultado"])
+                    horda_info = resultado["horda"]
+                    console.print(f"[red]HORDA: {horda_info.descricao}[/]")
+                    if no_ref:
+                        r_atq = ataque_ao_refugio(estado, horda_info)
+                        console.print(r_atq["resultado"])
+                    else:
+                        console.print("[red]Sem refúgio para proteger — a horda passa por você![/]")
                 console.print("[green]Dia amanheceu![/]")
                 Prompt.ask("[dim]Enter para continuar[/]")
             else:
@@ -630,7 +647,6 @@ def menu_mover(estado: EstadoJogo):
     table.add_column("Característica")
     table.add_column("Perigo")
     for i, (q, r, nome, sigla, caract) in enumerate(destinos, 1):
-        from backend.heranca.engine import hex_chave
         setor_hex = estado.mapa.get(hex_chave(q, r))
         s = SETORES.get(setor_hex.tipo) if setor_hex else None
         perigo_str = "★" * s.perigo + "☆" * (5 - s.perigo) if s else "?"
