@@ -267,6 +267,7 @@ _acoes_desc = {
     "item_aleatorio": "Você revira os escombros em busca de itens úteis.",
     "interagir": "Você procura por outros sobreviventes no setor. Role Mente (Investigação). Sucesso: um novo sobrevivente se junta a você.",
     "voltar_refugio": "Você retorna ao seu Refúgio.",
+    "interagir_personagem": "Você conversa com uma personagem conhecida. Use Espírito (Manipulação) ou consulte o Oráculo.",
 }
 
 
@@ -342,6 +343,19 @@ def executar_acao(estado: EstadoJogo, acao_id: str) -> str:
             return f"[green]✓[/] Você encontrou [bold]{nome}[/], um sobrevivente que decide se juntar a você! (rolagem {r['total']})"
         _registrar_acontecimento(estado, "Tentei encontrar outros sobreviventes, mas não encontrei ninguém.")
         return f"[yellow]✗[/] Você não encontrou ninguém em {setor_nome}. (rolagem {r['total']})"
+
+    elif acao_id == "interagir_personagem":
+        avancar_hora(estado, 0.5)
+        if USAR_LLM:
+            from backend.heranca.narrative import interpretar_npc
+            estado_dict = {"setor": _setor_id_atual(estado), "hora": int(estado.hora), "minutos": int((estado.hora - int(estado.hora)) * 60), "saude": estado.sobrevivente.saude}
+            hist = _historico_recente(estado)
+            fala = interpretar_npc("Um conhecido", "Um sobrevivente que você já encontrou antes", "Neutro", "conversar", estado_dict, hist)
+            _registrar_acontecimento(estado, "Conversei com uma personagem conhecida.")
+            return fala
+        r = testar(estado, "Espírito", "Manipulação")
+        _registrar_acontecimento(estado, f"Interagi com uma personagem: {'sucesso' if r['sucesso'] else 'não rendeu'}.")
+        return f"[green]✓[/] Conversa produtiva. (rolagem {r['total']})" if r["sucesso"] else f"[yellow]✗[/] A conversa não rendeu. (rolagem {r['total']})"
 
     elif acao_id == "oraculo":
         if not USAR_LLM:
