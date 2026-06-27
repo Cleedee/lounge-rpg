@@ -406,6 +406,6 @@ async def fetch_logs(campaignId: str):
             "SELECT * FROM turn_results WHERE campaign_id = ? ORDER BY created_at DESC LIMIT 20",
             (campaignId,)
         ).fetchall()
-        return [dict(r) for r in rows]
+        return {"rows": [dict(r) for r in rows]}
     finally:
         conn.close()
